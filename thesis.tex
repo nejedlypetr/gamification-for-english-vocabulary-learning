@@ -1,0 +1,108 @@
+% arara: pdflatex: { synctex: yes }
+% arara: makeindex: { style: ctuthesis }
+% arara: bibtex
+
+% The class takes all the key=value arguments that \ctusetup does,
+% and a couple more: draft and oneside
+\documentclass[twoside]{ctuthesis}
+
+\ctusetup{
+	% preprint = \today,
+	mainlanguage = english,
+	otherlanguages = {czech},
+	title-czech = {Gamifikace ve výuce anglických slovíček},
+	title-english = {Gamification for English Vocabulary Learning},
+	subtitle-czech = {},
+	subtitle-english = {},
+	doctype = B,
+	faculty = F3,
+	department-czech = {Katedra počítačové grafiky a interakce},
+	department-english = {Department of Computer Graphics and Interaction},
+	author = {Petr Nejedlý},
+	supervisor = {Ing. Ivo Malý, Ph.D.},
+	% supervisor-address = {KN:E-425, \\ Karlovo náměstí 13, \\ Praha 2},
+	fieldofstudy-english = {Software Engineering and Technology},
+	subfieldofstudy-english = {Business informatics},
+	fieldofstudy-czech = {Softwarové inženýrství a technologie},
+	subfieldofstudy-czech = {Business informatics},
+	keywords-czech = {gamifikace, anglická slovíčka, mobilní aplikace, Flutter},
+	keywords-english = {gamification, English vocabulary, mobile app, Flutter},
+	day = 5,
+	month = 1,
+	year = 2025
+%	specification-file = {ctutest-zadani.pdf},
+%	front-specification = true,
+%	front-list-of-figures = false,
+%	front-list-of-tables = false,
+%	monochrome = true,
+%	layout-short = true,
+}
+
+\ctuprocess
+
+\setlength{\parskip}{1em}
+
+\addto\ctucaptionsczech{%
+	\def\supervisorname{Vedoucí}%
+	\def\subfieldofstudyname{Studijní program}%
+}
+
+\ctutemplateset{maketitle twocolumn default}{
+	\begin{twocolumnfrontmatterpage}
+		\ctutemplate{twocolumn.thanks}
+		\ctutemplate{twocolumn.declaration}
+		\ctutemplate{twocolumn.abstract.in.titlelanguage}
+		\ctutemplate{twocolumn.abstract.in.secondlanguage}
+		\ctutemplate{twocolumn.tableofcontents}
+		\ctutemplate{twocolumn.listoffigures}
+	\end{twocolumnfrontmatterpage}
+}
+
+% ----- Abstract -----
+\begin{abstract-czech}
+TODO: tady bude abstrakt v češtině
+\end{abstract-czech}
+
+\begin{abstract-english}
+TODO: here will be an abstract in English
+\end{abstract-english}
+
+% ----- Acknowledgements -----
+\begin{thanks}
+TODO: Acknowledgements...
+\end{thanks}
+
+% ----- Declaration -----
+\begin{declaration}
+TODO: Declaration...
+
+In Prague,~\monthinlanguage{title} \ctufield{day},~\ctufield{year}
+\end{declaration}
+
+% --------------------------------------------
+
+\begin{document}
+
+\maketitle
+
+% ----- THESIS TEXT (indiviual chapters) -----
+\include{chapters/1-introduction}
+\include{chapters/2-mobile-application-english-mind}
+
+\part{Analysis}
+\include{chapters/3-gamification-of-vocabulary-learning}
+\include{chapters/4-proposed-gamification-strategies-and-concepts}
+\include{chapters/5-user-testing-of-proposed-gamification-elements}
+
+\part{Implementation}
+\chapter{Technology selection}
+\chapter{Technology selection}
+\chapter{User testing}
+% --------------------------------------------
+
+\appendix
+\printindex
+\bibliographystyle{unsrt}
+\bibliography{chapters/bibliography}
+
+\end{document}
