@@ -86,13 +86,13 @@ In Prague,~\monthinlanguage{title} \ctufield{day},~\ctufield{year}
 \maketitle
 
 % ----- THESIS TEXT (indiviual chapters) -----
-\include{chapters/1-introduction}
-\include{chapters/2-mobile-application-english-mind}
+\include{src/chapters/01-introduction}
+\include{src/chapters/02-english-mind}
 
 \part{Analysis}
-\include{chapters/3-gamification-of-vocabulary-learning}
-\include{chapters/4-proposed-gamification-strategies-and-concepts}
-\include{chapters/5-user-testing-of-proposed-gamification-elements}
+\include{src/chapters/03-gamification}
+\include{src/chapters/04-proposed-strategies}
+\include{src/chapters/05-user-testing}
 
 \part{Implementation}
 \chapter{Technology selection}
@@ -103,6 +103,6 @@ In Prague,~\monthinlanguage{title} \ctufield{day},~\ctufield{year}
 \appendix
 \printindex
 \bibliographystyle{unsrt}
-\bibliography{chapters/bibliography}
+\bibliography{src/references/bibliography}
 
 \end{document}
