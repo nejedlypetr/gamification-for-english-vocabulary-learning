@@ -341,11 +341,11 @@ BoldFont={Technika-Bold}%
 % Comments to the chapter style apply here too.
 \def\ttlh@ctus#1#2#3#4#5#6#7#8{
 	\ifttl@label\else\sectionstarmark{#8}\fi	
-	\ifttl@label\else\addcontentsline{toc}{section}{#8}\fi
+	% \ifttl@label\else\addcontentsline{toc}{section}{#8}\fi
 	\ctu@title@boxify@x{#5}{0pt}{#3}{ #1{\ifttl@label#2\fi\strut\color{ctubluetext}#8\strut} }{}
 }
 \def\ttlh@ctuss#1#2#3#4#5#6#7#8{
-	\ifttl@label\else\addcontentsline{toc}{subsection}{#8}\fi
+	% \ifttl@label\else\addcontentsline{toc}{subsection}{#8}\fi
 	\ctu@title@boxify@x{#5}{0pt}{#3}{ #1{\ifttl@label#2\fi\strut\color{ctubluetext}#8\strut} }{}
 }
 \def\ttlh@ctusss#1#2#3#4#5#6#7#8{
@@ -834,6 +834,8 @@ BoldFont={Technika-Bold}%
 
 \usepackage{amsmath,amsfonts}
 \usepackage{unicode-math}
+\usepackage{pifont}
+\usepackage{array}
 
 % Optional loading of amsthm
 \ctuthesis_if_switch:nT { pkg-amsthm } {
