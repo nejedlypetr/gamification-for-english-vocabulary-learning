@@ -1,4 +1,4 @@
-\chapter{Gamification of vocabulary learning for English Mind}
+\chapter{Analysis of Gamification in Language Learning Applications}
 
 The motivation behind gamifying vocabulary learning is to increase learning efficiency and long-term retention through the inclusion of game elements that increase user motivation and engagement. Traditional methods of vocabulary learning, such as mechanical repetition or passive reading, can often be monotonous and lead to a decline in interest. Gamification brings these methods to life through elements such as rewards, challenges and competitions, leading to higher intrinsic learner's motivation.
 
@@ -6,7 +6,7 @@ By using gamification mechanisms it is possible to create an environment that is
 
 Gamification encompasses a vast array of concepts, including streaks, badges, achievements, challenges, quests, leaderboards, rewards, statistics, progression tracking, levels and tiers, user-generated content, time-limited events, feedback loops, personalization, social elements, narrative and storytelling, virtual currencies, and so on. Furthermore, all of them can be combined and mixed in various ways. Therefore, we will focus on a selected few that can significantly enhance the user experience in the English Mind app rather than trying to cover every single gamification concept that could benefit vocabulary learning.
 
-\textbf{TODO: add citation}
+\textbf{TODO: add citation, add in the following sections we will analyze....}
 
 \section{Current Gamification in English Mind}
 
@@ -32,7 +32,7 @@ English Mind currently lacks extensive gamification features, relying instead on
 
     \begin{figure}[!h]
         \includegraphics[width=0.8\textwidth]{src/figures/em-daily-goal.png}
-        \caption{Daily Goal and Mascot Tracking Newly Added Words to Learn (both highlighted in red)}
+        \caption{English Mind - Daily Goal and Word Addition Tracker (both highlighted in red)}
         \label{fig:em-daily-goal}
     \end{figure}
 
@@ -178,7 +178,7 @@ The analysis of gamification features reveals two key concepts: various types of
     By engaging users in developing Memo’s habitat, the app stimulates a sense of ownership and investment in the learning process. This connection can enhance motivation and commitment to vocabulary acquisition, making learning feel more like a game than a chore. 
 
     \begin{figure}[!h]
-        \includegraphics[width=0.8\textwidth]{src/figures/duocards-memo.png}
+        \includegraphics[width=0.7\textwidth]{src/figures/duocards-memo.png}
         \caption{DuoCards - Mascot Upgrade System (highlighted in red)}
         \label{fig:duocards-memo}
     \end{figure}
@@ -189,7 +189,7 @@ The analysis of gamification features reveals two key concepts: various types of
 
 Duolingo, the world's most popular language learning application with over 100 million monthly active users \cite{cite:duolingo_2024q2}, has revolutionized digital language education through its accessible and engaging approach. The application was chosen for analysis due to its pioneering innovations in gamification. While numerous studies have examined Duolingo's gamification strategies, we will focus only on a few elements that could be effectively adapted for English Mind, particularly those that complement its learning concepts and methodologies.
 
-Analysis revealed three concepts that English Mind could benefit from if implemented effectively. The following sections provide a brief introduction to these concepts.
+Analysis revealed three concepts that English Mind could benefit from if implemented effectively. The following sections provide an introduction to these concepts.
 
 \begin{itemize}
     \item \textbf{Various Exercises}
@@ -199,7 +199,7 @@ Analysis revealed three concepts that English Mind could benefit from if impleme
     \begin{itemize}
         \item \textbf{Matching pairs}
 
-        In this exercise, users are presented with a set of five words and their translations, which they must correctly pair together (see Figure \ref{fig:duolingo-exercise-types}). This matching activity typically appears at regular intervals throughout lessons or after the introduction of new vocabulary. The interactive nature of the exercise makes vocabulary practice more engaging than traditional memorization methods.
+        In this exercise, users are presented with a set of five words and their translations, which they must correctly pair together (see Figure \ref{fig:duolingo-exercise-types}). This matching activity typically appears at regular intervals throughout lessons or after the introduction of new vocabulary.
         
         \item \textbf{Speaking practice}
 
@@ -211,7 +211,7 @@ Analysis revealed three concepts that English Mind could benefit from if impleme
     \end{itemize}
 
     \begin{figure}[!h]
-        \includegraphics[width=1\textwidth]{src/figures/duolingo-exercise-types.png}
+        \includegraphics[width=0.98\textwidth]{src/figures/duolingo-exercise-types.png}
         \caption{Duolingo - Types of Exercises (highlighted in red)}
         \label{fig:duolingo-exercise-types}
     \end{figure}
@@ -230,14 +230,22 @@ Analysis revealed three concepts that English Mind could benefit from if impleme
     This immediate feedback loop is crucial for user motivation, as it provides a sense of achievement and progress tracking. The inclusion of XP points and streaks transforms the learning process into a game-like experience, encouraging users to maintain consistent practice habits. The celebratory animations and positive reinforcement help create a rewarding atmosphere, making the learning process more enjoyable.
 
     \begin{figure}[!h]
-        \includegraphics[width=1\textwidth]{src/figures/duolingo-lesson-review.png}
+        \includegraphics[width=0.85\textwidth]{src/figures/duolingo-lesson-review.png}
         \caption{Duolingo - Review After Finishing a Lesson (highlighted in red)}
         \label{fig:duolingo-lesson-review}
     \end{figure}
 
+    \newpage
+
     \item \textbf{Daily Streak}
 
     One of Duolingo's most powerful gamification features is the daily streak system, which tracks consecutive days of learning activity (see Figure \ref{fig:duolingo-daily-streak}). Users maintain their streak by completing at least one lesson each day, creating a powerful psychological incentive for consistent practice. To make this system more flexible and user-friendly, Duolingo introduced "Streak Freezes" - items that users can acquire to preserve their streak during a day of inactivity.
+
+    \begin{figure}[!h]
+        \includegraphics[width=0.72\textwidth]{src/figures/duolingo-streak.png}
+        \caption{Duolingo - Daily Streak (highlighted in red)}
+        \label{fig:duolingo-daily-streak}
+    \end{figure}
 
     The streak system is supported by a sophisticated notification framework that employs various psychological triggers to maintain user engagement. These include:
 
@@ -252,10 +260,80 @@ Analysis revealed three concepts that English Mind could benefit from if impleme
 
     These features work together to create multiple touchpoints throughout the user's day, combining immediate rewards with long-term achievement tracking. The effectiveness of this approach is evident in the data. Over 20\% of Duolingo's daily active users maintain streaks longer than one year \cite{cite:duolingo_2024q2}. The streak system exemplifies how gamification can transform a learning obligation into an engaging daily ritual, effectively addressing one of language learning's most significant challenges: maintaining a consistent practice.
     
-    \begin{figure}[!h]
-        \includegraphics[width=1\textwidth]{src/figures/duolingo-streak.png}
-        \caption{Duolingo - Daily Streak (highlighted in red)}
-        \label{fig:duolingo-daily-streak}
-    \end{figure}
-    
 \end{itemize}
+
+\section{Comparison and Findings}
+
+The analysis of gamification features across English Mind and similar applications reveals several interesting patterns and opportunities for enhancement. Table \ref{tab:gamification-comparison} provides a comprehensive overview of the features implemented across all analyzed applications, highlighting both commonalities and unique approaches.
+
+\begin{table}[h]
+    \caption{Comparison of Gamification Features Across Applications}
+    \label{tab:gamification-comparison}
+    
+    % Spacing between rows and columns
+    \renewcommand{\arraystretch}{1.2}
+    \setlength{\tabcolsep}{2pt}
+    
+    \begin{tabular}{l>{\centering}p{2cm}>{\centering}p{2cm}>{\centering}p{2cm}>{\centering\arraybackslash}p{2cm}}
+        \toprule
+        \textbf{Feature} & \textbf{English Mind} & \textbf{WordUp} & \textbf{DuoCards} & \textbf{Duolingo} \\
+        \midrule
+        \multicolumn{5}{l}{\textbf{Practice Variations}} \\
+        Multiple flashcard types & \textemdash & \ding{51} & \ding{51} & \ding{51} \\
+        Spelling exercises & \textemdash & \ding{51} & \ding{51} & \ding{51} \\
+        Matching exercises & \textemdash & \ding{51} & \ding{51} & \ding{51} \\
+        Speaking exercises & \textemdash & \textemdash & \textemdash & \ding{51} \\
+        \midrule
+        \multicolumn{5}{l}{\textbf{Progress Tracking}} \\
+        Overall progress visualization & \ding{51} & \ding{51} & \ding{51} & \ding{51} \\
+        Practice session progress bar & \ding{51} & \ding{51} & \ding{51} & \ding{51} \\
+        Individual word progress & \textemdash & \ding{51} & \textemdash & \textemdash \\
+        \midrule
+        \multicolumn{5}{l}{\textbf{Streaks and Daily Goals}} \\
+        Streak system & \textemdash & \textemdash & \ding{51} & \ding{51} \\
+        Daily word goal & \ding{51} & \textemdash & \textemdash & \textemdash \\
+        Daily time goal & \textemdash & \ding{51} & \textemdash & \textemdash \\
+        \midrule
+        \multicolumn{5}{l}{\textbf{Rewards and Motivation}} \\
+        Virtual currency & \textemdash & \textemdash & \ding{51} & \ding{51} \\
+        Post-practice review & \textemdash & \textemdash & \textemdash & \ding{51} \\ 
+        Leaderboards & \textemdash & \ding{51} & \textemdash & \ding{51} \\
+        Mascot upgrade system & \textemdash & \textemdash & \ding{51} & \textemdash \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+Key findings from the analysis include:
+
+\begin{itemize}
+    \item \textbf{Practice Variation is Standard}
+    
+    WordUp, DuoCards, and Duolingo all incorporate multiple types of exercises or flashcards, contrasting with English Mind's current single-format approach. This variety helps prevent learning fatigue and addresses different aspects of vocabulary acquisition. Particularly noteworthy is Duolingo's integration of speaking exercises, which could become more feasible with advancing language processing technologies.
+
+    \item \textbf{Basic Progress Tracking is Universal}
+    
+    All analyzed applications implement some form of progress visualization, suggesting this is a fundamental gamification feature for vocabulary learning apps. However, WordUp's individual word progress tracking stands out as a unique approach that could enhance user engagement with specific vocabulary items.
+
+    \item \textbf{Diverse Approaches to Daily Goals}
+    
+    While all applications encourage regular practice, they employ different strategies. English Mind focuses on word quantity goals, whereas WordUp emphasizes time-based goals. Duolingo's streak system, supported by its comprehensive notification framework and streak freeze mechanism, appears particularly effective at maintaining long-term user engagement.
+
+    \item \textbf{Reward Systems Vary}
+    
+    The analysis reveals diverse approaches to reward systems. DuoCards' mascot upgrade system and virtual currency provide tangible rewards for learning progress, while WordUp's leaderboard system adds a social competitive element. Duolingo combines multiple approaches, including post-practice reviews and virtual currency. English Mind currently lacks such reward mechanisms, presenting an opportunity for enhancement.
+
+\end{itemize}
+
+These findings suggest several potential areas for improving English Mind's gamification framework:
+
+\begin{enumerate}
+    \item \textbf{Exercise Diversification:} Implementing various flashcard types and exercise formats could make practice sessions more engaging while reinforcing learning through different approaches.
+    
+    \item \textbf{Enhanced Progress Tracking:} Adding individual word progress tracking could provide users with more detailed insights into their learning journey.
+    
+    \item \textbf{Engagement Mechanisms:} Introducing a streak system with protective features (like streak freezes) could encourage consistent practice habits.
+    
+    \item \textbf{Reward Framework:} Developing a reward system, whether through virtual currency, achievements, or social features, could provide additional motivation for continued engagement.
+\end{enumerate}
+
+These improvements should be carefully designed to complement English Mind's existing learning methodology while enhancing user engagement and motivation. The next chapter will explore specific recommendations for implementing these enhancements.
