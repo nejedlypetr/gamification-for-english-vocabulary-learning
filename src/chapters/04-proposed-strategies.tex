@@ -86,17 +86,64 @@ The diversification of flashcard types is expected to yield several benefits:
 \begin{itemize}
     \item \textbf{Enhanced Engagement:} Variety in flashcard types reduces monotony and maintains user interest throughout longer practice sessions.
     
-    \item \textbf{Comprehensive Learning:} Different flashcard types target various aspects of vocabulary acquisition, leading to more robust word knowledge.
-    
-    \item \textbf{Improved Retention:} Encountering words through different exercise types (recognition, matching, spelling, and pronunciation) creates multiple memory pathways, leading to stronger and longer-lasting vocabulary retention.
+    \item \textbf{Comprehensive Learning and Retention:} Encountering words through diverse flashcard types (recognition, matching, spelling, and pronunciation) creates multiple memory pathways, leading to stronger and longer-lasting vocabulary mastery.
     
 \end{itemize}
 
 \subsection{Individual Word Progress Tracking}
-% Visual progress indicator for each word
-% Integration with existing SRS system
-% Wireframes showing progress visualization
-% Expected impact on user motivation
+
+Building upon the success of WordUp's individual word progress tracking, we propose implementing a visual progress indicator system that integrates seamlessly with English Mind's existing spaced repetition system. This feature provides users with clear, immediate feedback on their progress with each vocabulary item, helping them understand where they stand in the learning journey for specific words.
+
+\subsubsection{Five-Stage Progress System}
+
+The visual indicator system maps the existing spaced repetition intervals into five distinct stages. This system serves purely as a user-friendly representation of progress and does not modify the underlying SRS algorithm:
+
+
+\begin{itemize}
+    \item \textbf{Starting (Stage 1)}
+    
+    Represents words in their first 24 hours after introduction. These words are in the early stages of learning and require frequent review to establish basic recognition.
+    
+    \item \textbf{Familiarizing (Stage 2)}
+    
+    Covers words practiced between 1 day and 1 week. During this stage, words still require frequent reviews to build early recall strength and establish memory patterns.
+    
+    \item \textbf{Reinforcing (Stage 3)}
+    
+    Includes words with review intervals of 1-3 weeks. At this stage, users can recall words reliably, demonstrating consistent retention with moderate repetition intervals.
+    
+    \item \textbf{Strengthening (Stage 4)}
+    
+    Represents words practiced at 3-week to 3-month intervals. Users show strong confidence in recall, requiring significantly less frequent review as the word becomes well-established in long-term memory.
+    
+    \item \textbf{Almost Mastered (Stage 5)}
+    
+    Indicates words that have reached intervals of 3-8 months between reviews. These words are approaching full mastery, requiring only rare reviews to maintain retention. Once a word exceeds the 8-month interval, it will be marked as "known" and graduate from the regular review system.
+\end{itemize}
+
+\subsubsection{Visual Implementation}
+
+The progress indicator appears in the top-left corner of primary flashcards (see Figure \ref{fig:em-prototype-word-progress}). It consists of five sequential boxes that fill progressively as the word advances through the stages, providing an intuitive visualization of progress. This design choice ensures the indicator is visible but not distracting from the primary learning task.
+
+\begin{figure}[!h]
+    \includegraphics[width=1\textwidth]{src/figures/em-prototype-progress-system.png}
+    \caption{English Mind - Prototype: Individual Word Progress Indicator (highlighted in red)}
+    \label{fig:em-prototype-word-progress}
+\end{figure}
+
+\subsubsection{Integration with Existing SRS}
+
+The progress tracking system is designed to work in harmony with the existing spaced repetition algorithm. Progress stages are determined automatically based on the word's current interval in the SRS system, with stages advancing or regressing according to review performance. This implementation leverages existing SRS metadata, requiring minimal additional computational overhead.
+
+\subsubsection{Expected Impact}
+
+The implementation of individual word progress tracking is expected to provide several benefits:
+
+\begin{itemize}
+    \item \textbf{Enhanced Motivation and Engagement:} Visual progress indicators create a game-like element that provides a sense of achievement as words advance through different stages.
+    
+    \item \textbf{Simplified Learning Metrics:} The staged system provides tangible feedback on the learning journey, making abstract concepts like spaced repetition more concrete and understandable.
+\end{itemize}
 
 \subsection{Post-Practice Review}
 % End-of-session summary screen
