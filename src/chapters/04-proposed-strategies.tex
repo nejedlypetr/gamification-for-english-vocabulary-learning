@@ -92,7 +92,7 @@ The diversification of flashcard types is expected to yield several benefits:
 
 \subsection{Individual Word Progress Tracking}
 
-Building upon the success of WordUp's individual word progress tracking, we propose implementing a visual progress indicator system that integrates seamlessly with English Mind's existing spaced repetition system. This feature provides users with clear, immediate feedback on their progress with each vocabulary item, helping them understand where they stand in the learning journey for specific words.
+Building upon the success of WordUp's individual word progress tracking (see Section \ref{sec:wordup-individual-word-progress-experience}), we propose implementing a visual progress indicator system that integrates seamlessly with English Mind's existing spaced repetition system. This feature provides users with clear, immediate feedback on their progress with each vocabulary item, helping them understand where they stand in the learning journey for specific words.
 
 \subsubsection{Five-Stage Progress System}
 
@@ -146,10 +146,48 @@ The implementation of individual word progress tracking is expected to provide s
 \end{itemize}
 
 \subsection{Post-Practice Review}
-% End-of-session summary screen
-% Practice statistics
-% Wireframes for review screen
-% Expected impact on user engagement
+
+Drawing inspiration from Duolingo's successful implementation of post-practice feedback (see Section \ref{sec:duolingo-lesson-review}), we propose adding an engaging post-practice summary screen to English Mind. This feature provides immediate feedback and reinforcement after completing a practice session, helping users track their progress and maintain motivation.
+
+\subsubsection{Post-Practice Review Screen Components}
+
+The post-practice review screen consists of several key elements (see Figure \ref{fig:em-prototype-practice-review}):
+
+\begin{itemize}
+    \item \textbf{Practice Statistics}
+    
+    Clear visualization of practice session metrics including the number of words practiced and time spent practicing.
+    
+    \item \textbf{Mascot Interaction}
+    
+    The app's mascot appears with randomly selected poses to add personality to the user experience.
+    
+    \item \textbf{Motivational Messages}
+    
+    A rotating collection of encouraging messages that vary based on factors such as the number of words practiced, time spent practicing, and time of day.
+    
+    \item \textbf{Celebratory Animation}
+    
+    A confetti animation plays when the review screen appears, providing immediate positive reinforcement for completing the practice session. The animation is optimized to ensure smooth and lightweight performance across different devices.
+\end{itemize}
+
+\begin{figure}[!h]
+    \includegraphics[width=0.8\textwidth]{src/figures/em-prototype-review.png}
+    \caption{English Mind - Prototype: Post-Practice Review Screen}
+    \label{fig:em-prototype-practice-review}
+\end{figure}
+
+\subsubsection{Expected Impact}
+
+The implementation of a post-practice review screen is expected to:
+
+\begin{itemize}
+    \item \textbf{Increase Practice Completion:} The anticipation of positive feedback and celebration may motivate users to complete their practice sessions.
+    
+    \item \textbf{Boost User Satisfaction:} Immediate positive reinforcement through animations and encouraging messages creates a more rewarding experience.
+\end{itemize}
+
+\newpage
 
 \section{Consistent Practice Motivation}
 \label{sec:em-gamification-practice-motivation}
@@ -158,10 +196,10 @@ The implementation of individual word progress tracking is expected to provide s
 \subsection{Daily Goals and Streak System}
 % Enhanced visualization of daily word goals
 % Progress tracking throughout the day
-% Wireframes for goal visualization
+% High-fidelity prototype for goal visualization
 % Expected impact on daily engagement
 % Daily streak tracking mechanism
 % Streak protection features
 % Notification strategy
-% Wireframes for streak visualization
+% High-fidelity prototype for streak visualization
 % Expected impact on long-term retention
