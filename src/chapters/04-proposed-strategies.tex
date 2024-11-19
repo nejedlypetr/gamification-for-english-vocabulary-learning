@@ -191,15 +191,37 @@ The implementation of a post-practice review screen is expected to:
 
 \section{Consistent Practice Motivation}
 \label{sec:em-gamification-practice-motivation}
-% This section focuses on features that encourage regular use
 
-\subsection{Daily Goals and Streak System}
-% Enhanced visualization of daily word goals
-% Progress tracking throughout the day
-% High-fidelity prototype for goal visualization
-% Expected impact on daily engagement
-% Daily streak tracking mechanism
-% Streak protection features
-% Notification strategy
-% High-fidelity prototype for streak visualization
-% Expected impact on long-term retention
+Regular practice is crucial for effective vocabulary acquisition and retention. Currently, English Mind lacks features that promote consistent engagement, so we propose implementing a streak system — a feature that has proven highly effective in Duolingo's learning ecosystem (see Section \ref{sec:duolingo-streak-system}).
+
+\subsection{Streak System}
+
+The streak system is built on the fundamental requirement of learning at least one new word each day to maintain an active streak. Users must mark at least one word as "learning" each day and then review it at their daily queue of flashcards.This requirement ensures meaningful progress while keeping the daily commitment manageable for users. 
+
+To support the effectiveness of the spaced repetition system, new words are strategically placed at the end of the review queue. This placement naturally encourages users to complete their due reviews before accessing the newly added words.
+
+The system intentionally adopts a simplified approach, omitting streak features like "freeze" or streak recovery options. This deliberate choice allows us to establish and validate the core streak mechanics first, while features like streak freezes could be introduced in future iterations based on user feedback and engagement patterns.
+
+\subsubsection{Visual Implementation}
+
+The streak counter is prominently displayed at the top of the main screen (see Figure \ref{fig:em-prototype-streak}). This implementation includes a clear numerical display of consecutive practice days, with visual states that reflect the streak's status: a bright, golden appearance for active streaks, and a faded, shadowed appearance when the streak is at risk of being lost.
+
+Upon completing the daily flashcard practice and increasing the streak, a celebration screen appears to reinforce the user's achievement (see Figure \ref{fig:em-prototype-streak}). This screen showcases the updated streak count alongside a weekly progress view displaying the current week's streak activity (Monday through Sunday). When users maintain a perfect week of daily practice, these seven days are highlighted within a special golden frame, providing additional visual recognition for consistent engagement.
+
+\newpage
+
+\begin{figure}[!h]
+    \includegraphics[width=0.9\textwidth]{src/figures/em-prototype-streak.png}
+    \caption{English Mind - Prototype: Streak Implementation}
+    \label{fig:em-prototype-streak}
+\end{figure}
+
+\subsubsection{Expected Impact}
+
+The streak system is designed to serve multiple pedagogical and motivational purposes:
+
+\begin{itemize}
+    \item \textbf{Establish Daily Practice Habits:} By providing a clear, visible metric for consistency, it helps users establish and maintain daily practice habits.
+    
+    \item \textbf{Encourage Complete Reviews:} The strategic placement of new words after due flashcards naturally encourages users to complete their spaced repetition queue.
+\end{itemize}
