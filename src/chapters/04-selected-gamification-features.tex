@@ -1,32 +1,31 @@
 \chapter{Selected Gamification Features for English Mind}
 
-Based on the analysis of existing applications and their gamification features, we have identified several opportunities to enhance the English Mind application. Our selection process focused on features that meet three key criteria:
+Through systematic analysis of existing language learning applications and their gamification implementations, this chapter presents a carefully curated selection of gamification features for English Mind. 
+
+The selection methodology prioritized features that have demonstrated effectiveness in existing applications while maintaining strong alignment with English Mind's core pedagogical principles. Identified features strategically enhance two critical aspects of the learning experience:
 
 \begin{enumerate}
-    \item \textbf{High Impact Potential:} Features that have demonstrated effectiveness in other applications and show potential for improving user engagement and learning outcomes.
+    \item \textbf{Enhanced Practice Experience} 
+    \begin{itemize}
+        \item Diversified flashcard types
+        \begin{itemize}
+            \item Word spelling
+            \item Word pronunciation
+            \item Word-Definition matching
+            \item Word-Translation matching
+        \end{itemize}
+        \item Post-practice review providing immediate feedback and reinforcement
+        \item Individual word progress tracking breaking the abstract concept of SRS into tangible stages
+    \end{itemize}
     
-    \item \textbf{Alignment with Core Concepts:} Features that complement and enhance English Mind's fundamental learning principles of frequency-based vocabulary acquisition and spaced repetition.
-    
-    \item \textbf{Implementation Feasibility:} Solutions that can be realistically implemented within the existing application architecture and technical constraints.
+    \item \textbf{Consistent Practice Motivation} 
+    \begin{itemize}
+        \item A streak system requiring daily engagement with new vocabulary
+    \end{itemize}
 \end{enumerate}
 
-Rather than attempting to implement every possible gamification feature, we have prioritized a focused set of enhancements that we believe will provide the most significant benefits to users. For each proposed feature, we have developed detailed high-fidelity prototypes and implementation considerations. These designs demonstrate how each gamification element will be integrated into the existing application while maintaining its core educational value. These proposed features have been organized into two main categories:
-
-\begin{itemize}
-    \item \textbf{Category 1: Enhanced Practice Experience}
-    
-    Improvements to the core flashcard practice system to make it more engaging and effective (see Section \ref{sec:em-gamification-practice-experience}).
-    
-    \item \textbf{Category 2: Consistent Practice Motivation}
-    
-    Features designed to encourage regular app usage and maintain long-term user engagement (see Section \ref{sec:em-gamification-practice-motivation}).
-\end{itemize}
-
-\section{Category 1: Enhanced Practice Experience}
-\label{sec:em-gamification-practice-experience}
-The core flashcard practice experience is fundamental to English Mind's learning methodology. While the current implementation is functional, our analysis revealed several opportunities to make it more engaging and effective through gamification. This section presents three key enhancements to the practice experience, each designed to increase user engagement while maintaining the app's educational integrity.
-
-\subsection{Diversified Flashcard Types}
+\newpage
+\section{Diversified Flashcard Types}
 
 The current English Mind flashcard system uses a single format where users view an English word and recall its meaning. While effective, our analysis of similar applications revealed that incorporating multiple flashcard types can enhance engagement and address different aspects of vocabulary acquisition. We propose expanding the system to include five distinct flashcard types, each targeting specific learning objectives (see Figure \ref{fig:em-prototype-flashcard-types}).
 
@@ -62,7 +61,7 @@ The current English Mind flashcard system uses a single format where users view 
     \label{fig:em-prototype-flashcard-types}
 \end{figure}
 
-\subsubsection{Implementation Considerations}
+\subsection*{Implementation Considerations}
 
 The integration of new flashcard types requires careful consideration of both the spaced repetition system and the distribution of different card types during practice sessions.
 
@@ -81,7 +80,7 @@ The distribution of flashcard types within a practice session follows a structur
     \end{itemize}
 \end{itemize}
 
-\subsubsection{Expected Impact}
+\subsection*{Expected Impact}
 
 The diversification of flashcard types is expected to yield several benefits:
 
@@ -92,11 +91,11 @@ The diversification of flashcard types is expected to yield several benefits:
     
 \end{itemize}
 
-\subsection{Individual Word Progress Tracking}
+\section{Word Progress Tracking}
 
 Building upon the success of WordUp's individual word progress tracking (see Section \ref{sec:wordup-individual-word-progress-experience}), we propose implementing a visual progress indicator system that integrates seamlessly with English Mind's existing spaced repetition system. This feature provides users with clear, immediate feedback on their progress with each vocabulary item, helping them understand where they stand in the learning journey for specific words.
 
-\subsubsection{Five-Stage Progress System}
+\subsection*{Five-Stage Progress System}
 
 The visual indicator system maps the existing spaced repetition intervals into five distinct stages. This system serves purely as a user-friendly representation of progress and does not modify the underlying SRS algorithm:
 
@@ -123,7 +122,7 @@ The visual indicator system maps the existing spaced repetition intervals into f
     Indicates words that have reached intervals of 3-8 months between reviews. These words are approaching full mastery, requiring only rare reviews to maintain retention. Once a word exceeds the 8-month interval, it will be marked as "known" and graduate from the regular review system.
 \end{itemize}
 
-\subsubsection{Visual Implementation}
+\subsection*{Visual Implementation}
 
 The progress indicator appears in the top-left corner of primary flashcards (see Figure \ref{fig:em-prototype-word-progress}). It consists of five sequential boxes that fill progressively as the word advances through the stages, providing an intuitive visualization of progress. This design choice ensures the indicator is visible but not distracting from the primary learning task.
 
@@ -133,11 +132,11 @@ The progress indicator appears in the top-left corner of primary flashcards (see
     \label{fig:em-prototype-word-progress}
 \end{figure}
 
-\subsubsection{Integration with Existing SRS}
+\subsection*{Integration with Existing SRS}
 
 The progress tracking system is designed to work in harmony with the existing spaced repetition algorithm. Progress stages are determined automatically based on the word's current interval in the SRS system, with stages advancing or regressing according to review performance. This implementation leverages existing SRS metadata, requiring minimal additional computational overhead.
 
-\subsubsection{Expected Impact}
+\subsection*{Expected Impact}
 
 The implementation of individual word progress tracking is expected to provide several benefits:
 
@@ -147,11 +146,11 @@ The implementation of individual word progress tracking is expected to provide s
     \item \textbf{Simplified Learning Metrics:} The staged system provides tangible feedback on the learning journey, making abstract concepts like spaced repetition more concrete and understandable.
 \end{itemize}
 
-\subsection{Post-Practice Review}
+\section{Post-Practice Review}
 
 Drawing inspiration from Duolingo's successful implementation of post-practice feedback (see Section \ref{sec:duolingo-lesson-review}), we propose adding an engaging post-practice summary screen to English Mind. This feature provides immediate feedback and reinforcement after completing a practice session, helping users track their progress and maintain motivation.
 
-\subsubsection{Post-Practice Review Screen Components}
+\subsection*{Post-Practice Review Screen Components}
 
 The post-practice review screen consists of several key elements (see Figure \ref{fig:em-prototype-practice-review}):
 
@@ -179,7 +178,7 @@ The post-practice review screen consists of several key elements (see Figure \re
     \label{fig:em-prototype-practice-review}
 \end{figure}
 
-\subsubsection{Expected Impact}
+\subsection*{Expected Impact}
 
 The implementation of a post-practice review screen is expected to:
 
@@ -189,14 +188,7 @@ The implementation of a post-practice review screen is expected to:
     \item \textbf{Boost User Satisfaction:} Immediate positive reinforcement through animations and encouraging messages creates a more rewarding experience.
 \end{itemize}
 
-\newpage
-
-\section{Category 2: Consistent Practice Motivation}
-\label{sec:em-gamification-practice-motivation}
-
-Regular practice is crucial for effective vocabulary acquisition and retention. Currently, English Mind lacks features that promote consistent engagement, so we propose implementing a streak system — a feature that has proven highly effective in Duolingo's learning ecosystem (see Section \ref{sec:duolingo-streak-system}).
-
-\subsection{Streak System}
+\section{Streak System}
 
 The streak system is built on the fundamental requirement of learning at least one new word each day to maintain an active streak. Users must mark at least one word as "learning" each day and then review it at their daily queue of flashcards.This requirement ensures meaningful progress while keeping the daily commitment manageable for users. 
 
@@ -204,7 +196,7 @@ To support the effectiveness of the spaced repetition system, new words are stra
 
 The system intentionally adopts a simplified approach, omitting streak features like "freeze" or streak recovery options. This deliberate choice allows us to establish and validate the core streak mechanics first, while features like streak freezes could be introduced in future iterations based on user feedback and engagement patterns.
 
-\subsubsection{Visual Implementation}
+\subsection*{Visual Implementation}
 
 The streak counter is prominently displayed at the top of the main screen (see Figure \ref{fig:em-prototype-streak}). This implementation includes a clear numerical display of consecutive practice days, with visual states that reflect the streak's status: a bright, golden appearance for active streaks, and a faded, shadowed appearance when the streak is at risk of being lost.
 
@@ -218,7 +210,7 @@ Upon completing the daily flashcard practice and increasing the streak, a celebr
     \label{fig:em-prototype-streak}
 \end{figure}
 
-\subsubsection{Expected Impact}
+\subsection*{Expected Impact}
 
 The streak system is designed to serve multiple pedagogical and motivational purposes:
 
