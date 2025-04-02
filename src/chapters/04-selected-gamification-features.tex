@@ -66,72 +66,59 @@ The distribution of flashcard types in a practice session follows a structured a
 
 \section{Vocabulary Progress Tracking}
 
-Inspired by WordUp's individual word progress tracking (see Section \ref{sec:wordup-individual-word-progress-experience}), we propose implementing a visual progress indicator system that integrates seamlessly with English Mind's existing spaced repetition system. This feature provides users with clear, immediate feedback on their progress with each vocabulary item, helping them understand where they stand in the learning journey for specific words. The visual indicator system maps the existing spaced repetition intervals into five distinct stages:
-\begin{enumerate}
-    \item \textbf{Starting (Stage 1)}
-    
-    Represents words in their first 3 days after introduction. These words are in the early stages of learning and require frequent review to establish basic recognition.
-    
-    \item \textbf{Recognizing (Stage 2)}
-    
-    Covers words in review interval between 1 day and 1 week. During this stage, words still require frequent reviews to build early recall strength and establish memory patterns.
-    
-    \item \textbf{Reinforcing (Stage 3)}
-    
-    Includes words with review intervals of 1-3 weeks. At this stage, users can recall words reliably, demonstrating consistent retention with moderate repetition intervals.
-    
-    \item \textbf{Strengthening (Stage 4)}
-    
-    Represents words practiced at 3-week to 3-month intervals. Users show strong confidence in recall, requiring significantly less frequent review as the word becomes well-established in long-term memory.
-    
-    \item \textbf{Mastering (Stage 5)}
-    
-    Indicates words that have reached intervals of 3-8 months between reviews. These words are approaching full mastery, requiring only rare reviews to maintain retention. Once a word exceeds the 8-month interval, it will be marked as "known" and graduate from the regular review system.
-\end{enumerate}
+Inspired by WordUp's individual word progress tracking (see Section \ref{sec:wordup-individual-word-progress-experience}), we propose implementing a visual progress indicator system that integrates seamlessly with English Mind's existing spaced repetition system. This feature provides users with clear, immediate feedback on their progress with each vocabulary item, helping them understand where they stand in the learning journey for specific words. The visual indicator system maps the existing spaced repetition intervals into five distinct stages (see Table \ref{tab:vocabulary-progress-tracking-stages}).
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|l|l|}
+        \hline
+        \textbf{Stage} & \textbf{Name} & \textbf{SRS Interval} \\
+        \hline
+        1 & Starting & 0 minutes - 3 days \\
+        \hline
+        2 & Recognizing & 3 days - 1 week \\
+        \hline
+        3 & Reinforcing & 1 week - 3 weeks \\
+        \hline
+        4 & Strengthening & 3 weeks - 3 months \\
+        \hline
+        5 & Mastering & 3 months - 8 months \\
+        \hline
+    \end{tabular}
+    \caption{Vocabulary Progress Tracking Stages}
+    \label{tab:vocabulary-progress-tracking-stages}
+\end{table}
 
-The progress indicator appears only on the recall meaning flashcards (see Figure \ref{fig:em-prototype-word-progress}). It consists of five sequential boxes that fill progressively as the word advances through the stages, providing users with tangible feedback on their learning journey. The visual representation of progress creates a game-like element that enhances motivation and engagement, making the abstract concept of spaced repetition more concrete and understandable.
+The progress indicator appears only on the recall meaning flashcards (see Figure \ref{fig:em-prototype-word-progress}). It consists of five sequential boxes that fill progressively as the word advances through the stages, making the abstract concept of spaced repetition more concrete and understandable. The visual representation of progress creates a game-like element that enhances motivation and engagement.
 
 \begin{figure}[!h]
-    \includegraphics[width=0.95\textwidth]{src/figures/em-prototype-progress-system.png}
-    \caption{Prototype: Vocabulary Progress Tracker}
+    \includegraphics[width=0.86\textwidth]{src/figures/em-prototype-progress-system.png}
+    \caption{Prototype - Vocabulary Progress Tracker}
     \label{fig:em-prototype-word-progress}
-\end{figure}
-\begin{figure}[!h]
-    \includegraphics[width=0.55\textwidth]{src/figures/em-prototype-review.png}
-    \caption{Prototype: Post-Practice Review}
-    \label{fig:em-prototype-practice-review}
 \end{figure}
 
 \section{Post-Practice Review}
 
 The post-practice review screen provides immediate feedback after completing a practice session (see Figure \ref{fig:em-prototype-practice-review}). It displays key metrics including the number of words practiced and time spent, accompanied by a brief motivational message. The implementation includes a lightweight confetti animation to provide positive reinforcement for session completion. This feature aims to increase user engagement and potentially increase practice session completion rates.
+\begin{figure}[!h]
+    \includegraphics[width=0.8\textwidth]{src/figures/em-prototype-review.png}
+    \caption{Prototype - Post-Practice Review}
+    \label{fig:em-prototype-practice-review}
+\end{figure}
 
 \section{Streak System}
 
-The streak system is built on the fundamental requirement of learning at least one new word each day to maintain an active streak. Users must mark at least one word as "learning" each day and then review it at their daily queue of flashcards.This requirement ensures meaningful progress while keeping the daily commitment manageable for users. 
+The streak system draws inspiration from successful implementations in language learning applications like Duolingo, where 20\% of 
+daily active users maintain streaks exceeding one year \cite
+{cite:duolingo_2024q2}. The system implements a daily engagement mechanism that requires users to learn at least one new vocabulary item per day to maintain their active streak. This design choice balances the need for consistent progress with manageable daily commitments. It provides users with a clear, quantifiable metric for tracking their consistency. This approach facilitates the development and maintenance of regular practice habits.
 
-To support the effectiveness of the spaced repetition system, new words are strategically placed at the end of the review queue. This placement naturally encourages users to complete their due reviews before accessing the newly added words.
+The system deliberately omits advanced features such as streak freezes or recovery options, prioritizing the establishment and validation of core streak mechanics. This simplified approach allows for future feature expansion based on empirical user engagement data and feedback.
 
-The system intentionally adopts a simplified approach, omitting streak features like "freeze" or streak recovery options. This deliberate choice allows us to establish and validate the core streak mechanics first, while features like streak freezes could be introduced in future iterations based on user feedback and engagement patterns.
+The system's visual implementation comprises two distinct components. The primary interface element is the streak counter (badge), prominently displayed at the top of the main screen (see Figure \ref{fig:em-prototype-streak}). This counter features a numerical representation of consecutive practice days, employing distinct visual states to indicate streak status: a golden appearance for active streaks and a faded state when the streak is at risk.
 
-\subsection*{Visual Implementation}
-
-The streak counter is prominently displayed at the top of the main screen (see Figure \ref{fig:em-prototype-streak}). This implementation includes a clear numerical display of consecutive practice days, with visual states that reflect the streak's status: a bright, golden appearance for active streaks, and a faded, shadowed appearance when the streak is at risk of being lost.
-
-Upon completing the daily flashcard practice and increasing the streak, a celebration screen appears to reinforce the user's achievement (see Figure \ref{fig:em-prototype-streak}). This screen showcases the updated streak count alongside a weekly progress view displaying the current week's streak activity (Monday through Sunday). When users maintain a perfect week of daily practice, these seven days are highlighted within a special golden frame, providing additional visual recognition for consistent engagement.
+The second component focuses on achievement recognition. Upon successful completion of daily practice, a celebration screen appears displaying the updated streak count and a weekly progress visualization. The weekly view presents the current week's practice activity (Monday through Sunday), with perfect weeks highlighted in a special golden frame to recognize consistent engagement.
 
 \begin{figure}[!h]
-    \includegraphics[width=0.9\textwidth]{src/figures/em-prototype-streak.png}
+    \includegraphics[width=0.88\textwidth]{src/figures/em-prototype-streak.png}
     \caption{English Mind - Prototype: Streak Implementation}
     \label{fig:em-prototype-streak}
 \end{figure}
-
-\subsection*{Expected Impact}
-
-The streak system is designed to serve multiple pedagogical and motivational purposes:
-
-\begin{itemize}
-    \item \textbf{Establish Daily Practice Habits:} By providing a clear, visible metric for consistency, it helps users establish and maintain daily practice habits.
-    
-    \item \textbf{Encourage Complete Reviews:} The strategic placement of new words after due flashcards naturally encourages users to complete their spaced repetition queue.
-\end{itemize}
