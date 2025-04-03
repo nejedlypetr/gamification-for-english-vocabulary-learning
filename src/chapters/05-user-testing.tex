@@ -1,20 +1,17 @@
-\chapter{User Testing}
+\chapter{User Testing of Prototype}
 
-This chapter describes the methodology and results of user testing conducted on the previously proposed and designed gamification features for English Mind. The testing focused on evaluating the clarity, intuitiveness, and potential effectiveness of the new gamification elements.
-
-\section{Testing Methodology}
+This chapter describes the methodology and results of user testing conducted on the previously proposed and designed gamification features for English Mind. The testing focused on evaluating the clarity, intuitiveness, and potential engagement effectiveness of the new gamification elements.
 
 Two distinct user groups were selected for testing to provide diverse perspectives. Group A consisted of participants with prior experience using language learning applications, while Group B included participants without significant experience in this area.
-
 \begin{itemize}
-    \item \textbf{Group A (Experienced Users):}
+    \item \textbf{Group A - Experienced Users}
     \begin{itemize}
         \item 3 participants aged 18-45
         \item Regular users of apps like Duolingo, WordUp, or Duocards
         \item Familiar with gamification concepts through regular usage of language learning applications (even without knowing the formal terminology)
     \end{itemize}
 
-    \item \textbf{Group B (Novice Users):}
+    \item \textbf{Group B - Novice Users}
     \begin{itemize}
         \item 3 participants aged 18-45
         \item Interest in learning English vocabulary
@@ -22,80 +19,70 @@ Two distinct user groups were selected for testing to provide diverse perspectiv
     \end{itemize}
 \end{itemize}
 
-The testing was conducted in a controlled, quiet environment where participants interacted with high-fidelity interactive prototypes on mobile devices. Each session lasted between 30-45 minutes and was documented through screen and audio recordings.
-
-Data collection during the testing sessions combined several methods to gather comprehensive feedback about the gamification features. Participants were encouraged to think aloud while interacting with the prototype, sharing their thoughts and reactions to different elements. This verbal feedback was supplemented by observation notes documenting user behavior, particularly noting any points of confusion or excitement. After completing the test scenario (see Section \ref{sec:test-scenario}), participants filled out a structured questionnaire rating various aspects of the gamification features on a 5-point Likert scale (see Table \ref{tab:questionnaire}). The questionnaire focused on key metrics such as feature clarity, perceived usefulness, and likelihood of maintaining engagement.
+The testing was conducted in a controlled environment where participants interacted with high-fidelity interactive prototypes on mobile devices according to the test scenario (see Section \ref{sec:test-scenario}). During the prototype interaction, participants were encouraged to think aloud, providing real-time feedback on their experience, while observers documented behavioral observations and points of confusion. Afterwards, participants completed a structured questionnaire using a 5-point Likert scale (see Table \ref{tab:questionnaire}) to evaluate feature clarity, perceived usefulness, and engagement potential.
 
 \input{src/tables/02-testing-questionnaire}
 
 \section{Test Scenario}
 \label{sec:test-scenario}
-The test scenario consists of two main phases: understanding the streak system and completing a practice session. This approach allows evaluation of both the gamification mechanics and their integration into the learning experience:
+The test scenario was structured as a series of specific tasks that participants were asked to perform, allowing for systematic evaluation of both gamification mechanics and their integration into the learning experience.
+
+The first part of test scenario focused on the streak system understanding:
 
 \begin{enumerate}
-    \item \textbf{Phase 1: Streak System}
+    \item Participants were shown the streak status badge and asked to:
     \begin{itemize}
-        \item Understanding streak activation and maintenance requirements
-        \item Interpreting streak status indicators
-        \item Initial feedback on motivational aspects
+        \item Interpret what the streak status badge represents
+        \item Explain how to activate a streak
+        \item Describe the requirements for maintaining a streak
+        \item Explain what actions would break their streak
+        \item Share their thoughts on how the streak system might motivate them
     \end{itemize}
+\end{enumerate}
     
-    \item \textbf{Phase 2: Practice Flashcards Session}
+
+In the second part of test scenario participants were asked to complete a practice session with various flashcard types:
+\begin{enumerate}
+    \item For each flashcard type, they were instructed to:
     \begin{itemize}
-        \item {Various Flashcard Types}
-        \begin{itemize}
-            \item Clarity of instructions for each flashcard type 
-            \item Perceived value of variety in maintaining engagement
-            \item Comfort level with each flashcard type's interaction method
-        \end{itemize}
+        \item Read the instructions aloud
+        \item Explain how they would interact with the card
+        \item Complete the task while verbalizing their thought process
+    \end{itemize}
 
-        \item {Individual Word Progress Tracking}
-        \begin{itemize}
-            \item Recognition and interpretation of the five-stage progress indicator
-            \item Visibility and placement of the progress indicator
-            \item Motivational impact of seeing word progress
-        \end{itemize}
+    \item After completing several flashcards, participants were asked to:
+    \begin{itemize}
+        \item Identify and explain the purpose of the element located in the top-right corner of the screen (without being told it was a progress tracker)
+        \item Describe stage system of the vocabulary progress tracker
+        \item Share how seeing their it affects their motivation
+    \end{itemize}
 
-        \item {Post-Practice Review}
-        \begin{itemize}
-            \item Comprehension of practice statistics
-            \item Impact of celebratory animations and mascot interactions
-            \item Understanding of how the completed session affects their streak
-        \end{itemize}
+    \item At the end of the practice session, participants were asked to:
+    \begin{itemize}
+        \item Interpret their practice statistics
+        \item Explain how the session completion affects their streak
+        \item Share their reaction to the celebratory animations and motivational messages
     \end{itemize}
 \end{enumerate}
 
-The testing process employs a think-aloud protocol, where participants verbalize their thoughts while interacting with the prototype. Initially, participants demonstrate their understanding of the streak system to the interviewer. They then proceed through a complete practice session, experiencing the integrated gamification elements. Throughout both phases, participants provide continuous feedback on interface clarity, emotional engagement, perceived long-term motivation potential, and any usability concerns. This structured approach enables comprehensive evaluation of both immediate user experience and potential sustained engagement with the application.
-
-\newpage
+After the test scenario participants were asked to fill out the questionnaire (see Table \ref{tab:questionnaire}).
 
 \section{Results and Evaluation}
 
-The user testing results, as detailed in Table \ref{tab:questionnaire-results}, provide valuable insights into the effectiveness and areas for improvement of the gamification features in the English Mind application.
-
-Overall, the feedback was positive, with participants appreciating the variety and engagement offered by the different flashcard types. The overall average rating across all questionnaire items was 4.5, indicating a generally favorable reception of the gamification elements. However, the testing also highlighted several areas needing improvement:
-
-\begin{itemize}
-    \item \textbf{"Can't Speak Now" Button Confusion}: Some users were confused by the prominence of the "Can't Speak Now" button, mistaking it for the primary action in the pronunciation flashcard type (see Figure \ref{fig:em-testing-pronunciation-before-after}).
+The user testing results, as detailed in Table \ref{tab:questionnaire-results}, provide valuable insights into the effectiveness and areas for improvement of the gamification features in the proposed design. Overall, the feedback was positive, with participants mainly appreciating the variety and engagement offered by the different flashcard types. The overall average rating across all questionnaire items was 4.5 out of 5, indicating a generally favorable reception of the proposed features. However, the testing also identified several areas requiring improvement. Following iterative design adjustments and subsequent testing, these modifications successfully enhanced the user experience and resolved the initial concerns. Key improvements included:
+\begin{enumerate}
+    \item The "Can't Speak Now" button's visual prominence led users to misinterpret it as the primary action in pronunciation exercises. To solve this, the interface was redesigned to emphasize the microphone button as the primary call-to-action through visual hierarchy and positioning (see Figure \ref{fig:em-testing-pronunciation-before-after}).
     
-    \textit{Solution}: Prioritize the pronunciation button with the microphone icon as the main call-to-action. This can be achieved by enhancing its size, color, or positioning to make it more prominent and intuitive for users.
-
-    \begin{figure}[!h]
-        \centering
-        \includegraphics[width=0.75\textwidth]{src/figures/em-testing-pronunciation-before-after.png}
-        \caption{Comparison of pronunciation interface before and after improvements}
-        \label{fig:em-testing-pronunciation-before-after}
-    \end{figure}
+    \item Initial user interactions with the matching flashcard 
+    type revealed comprehension challenges. This was addressed by implementing a concise instruction "Tap the matching pairs" to enhance task clarity.
     
-    \item \textbf{Matching Flashcard Instructions}: Users initially experienced confusion with the matching flashcard type, although they quickly figured it out.
-    
-    \textit{Solution}: Add brief, clear instructions or visual cues to guide users on how to interact with this flashcard type effectively.
-    
-    \item \textbf{Simplification of Explanations}: The explanation of the word progress indicator was perceived as too detailed and tiring by some participants.
-    
-    \textit{Solution}: Simplify the explanation by using concise language and visual aids, such as icons or diagrams, to improve user comprehension and reduce cognitive load.
-\end{itemize}
-
-These areas of improvement were subsequently adjusted and retested, confirming that the changes enhanced user experience and addressed the initial concerns effectively.
+    \item Participants reported cognitive overload from the detailed word progress explanation. To address this, the explanation was simplified using visual representations and concise language.
+\end{enumerate}
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.60\textwidth]{src/figures/em-testing-pronunciation-before-after.png}
+    \caption{Comparison of pronunciation interface before and after improvements}
+    \label{fig:em-testing-pronunciation-before-after}
+\end{figure}
 
 \input{src/tables/03-testing-questionnaire-results}
