@@ -1,0 +1,56 @@
+\chapter{Implementation}
+
+This chapter presents the technical implementation of the gamification features proposed in Chapter \ref{chap:proposed-solution-design} and validated through user testing in Chapter \ref{chap:prototype-user-testing}. The implementation process was structured to ensure both technical feasibility and alignment with the application's existing architecture while maintaining the core pedagogical principles of English Mind.
+
+The chapter begins with an analysis of the current system architecture, providing context for the technical decisions made during implementation. Following this, we introduce a monorepo architecture solution that enables parallel development of the prototype and main application. This approach allows for rapid iteration and testing of new features without disrupting the production environment. Finally, we detail the implementation of selected gamification features, focusing on technical considerations, integration challenges, and solutions adopted.
+
+\section{Existing System Architecture}
+\label{sec:existing-system-architecture}
+
+English Mind is built using the Flutter framework, chosen for its cross-platform capabilities and robust widget system. The application follows a modular architecture inspired by Clean Architecture principles, ensuring separation of concerns and maintainability. This section provides a comprehensive overview of the current system architecture, detailing the technology stack, architectural patterns, and key system components.
+\newpage
+\subsection{Technology Stack}
+
+The application is built using the Flutter framework, chosen for its cross-platform capabilities and robust widget system. This choice enables the development of a single codebase that runs seamlessly on both iOS and Android platforms while maintaining native-like performance and user experience. The decision to use Flutter was driven by its ability to deliver consistent user interfaces across platforms while maintaining high performance, as demonstrated by its successful implementation in numerous production applications \cite{cite:google_flutter_case_studies}.
+
+The data management strategy combines cloud-based and local storage solutions to balance performance, offline capability, and real-time synchronization requirements. Firebase Firestore serves as the primary cloud storage solution, providing real-time data synchronization and a NoSQL document database. This choice was made to leverage Firestore's built-in offline persistence and real-time updates, which are crucial for maintaining user progress across devices. For translation services, the application integrates with the Microsoft Translator API, selected for its high accuracy and extensive language support. The vocabulary data is stored locally in a JSON file containing word definitions and sentence examples, a design decision that ensures immediate access to core content without network dependency and reduces server load.
+
+The application leverages several key Flutter/Dart packages to enhance functionality and maintainability:
+\begin{itemize}
+    \item \textbf{flutter\_hooks} - State management solution chosen for its simplicity and performance benefits over traditional state management approaches.
+    \item \textbf{auto\_route} - Navigation and routing system that provides type-safe routing and reduces boilerplate code.
+    \item \textbf{flutter\_localizations} - Localization framework enabling internationalization support.
+    \item \textbf{apple\_sign\_in} - Apple sign-in provider for iOS platform authentication.
+    \item \textbf{google\_sign\_in} - Google sign-in provider for cross-platform authentication.
+    \item \textbf{firebase\_auth} - User authentication service providing secure user management.
+    \item \textbf{firebase\_functions} - Cloud functions for serverless computing, enabling scalable backend operations.
+    \item \textbf{firebase\_firestore} - Cloud storage for real-time data synchronization and offline persistence.
+\end{itemize}
+
+\subsection{Architectural Overview}
+
+The application's architecture is organized into distinct layers following Clean Architecture principles:
+
+\begin{itemize}
+    \item \textbf{Domain Layer}: Contains business logic, entities, and use cases. This layer is independent of external frameworks and libraries.
+    
+    \item \textbf{Data Layer}: Implements repositories and data sources, handling data operations and transformations.
+    
+    \item \textbf{Presentation Layer}: Manages UI components, state management, and user interactions.
+    
+    \item \textbf{Core Layer}: Provides shared utilities, constants, and common functionality across the application.
+\end{itemize}
+
+This layered architecture ensures:
+\begin{itemize}
+    \item Clear separation of concerns
+    \item Improved testability
+    \item Enhanced maintainability
+    \item Better scalability
+\end{itemize}
+
+\section{New Monorepo Architecture}
+\label{sec:new-monorepo-architecture}
+
+\section{Features Implementation}
+\label{sec:features-implementation}
