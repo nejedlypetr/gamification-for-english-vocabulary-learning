@@ -118,6 +118,8 @@ The monorepo architecture is organized into a clear directory structure that pro
         \item \textbf{\texttt{em\_widgets/}} – Reusable UI components.
         \item \textbf{\texttt{em\_vocabulary/}} – Core vocabulary data, models and management.
     \end{itemize}
+
+    \item \textbf{\texttt{melos.yaml}} – Melos configuration scripts.
 \end{itemize}
 
 The \texttt{em\_demo} application follows the same architectural structure as the main English Mind application, maintaining consistency in code organization and development patterns. This approach ensures that features developed in the demonstration application can be seamlessly integrated into the main application when ready for production deployment.
@@ -130,3 +132,91 @@ The adoption of Widgetbook was driven by its ability to provide centralized, int
 
 \section{Features Implementation}
 \label{sec:features-implementation}
+
+All gamification features proposed in Chapter \ref{chap:proposed-solution-design} were successfully implemented in the demonstration application. The implementation followed the architectural principles established in Section \ref{sec:new-system-architecture}, ensuring maintainability and scalability. While all features were implemented, this section focuses on the two most significant additions: the diversified flashcard system and the streak system. Detailed implementation specifics can be found in the source code.
+
+\subsection{Diversified Flashcard Types}
+
+The implementation of diversified flashcard types showcases a clean, type-safe approach using Dart's sealed classes. This design pattern ensures exhaustive handling of all flashcard types while maintaining a clear separation of concerns. The core of this implementation is the \texttt{FlashcardData} sealed class hierarchy:
+
+\begin{lstlisting}[language=Dart, caption={FlashcardData sealed class hierarchy defining different flashcard types}, label=lst:flashcard-data]
+sealed class FlashcardData {}
+
+class RecallFlashcardData extends FlashcardData {
+  final VocabularyEntry entry;
+  final FlashcardSrsMetadata metadata;
+
+  RecallFlashcardData({required this.entry, required this.metadata});
+}
+
+class SpellingFlashcardData extends FlashcardData {
+  final VocabularyEntry entry;
+
+  SpellingFlashcardData(this.entry);
+}
+
+class PronunciationFlashcardData extends FlashcardData {
+  final VocabularyEntry entry;
+
+  PronunciationFlashcardData(this.entry);
+}
+
+class MatchDefinitionsFlashcardData extends FlashcardData {
+  final List<VocabularyEntry> entries;
+
+  MatchDefinitionsFlashcardData(this.entries);
+}
+
+class MatchTranslationsFlashcardData extends FlashcardData {
+  final List<VocabularyEntry> entries;
+
+  MatchTranslationsFlashcardData(this.entries);
+}
+\end{lstlisting}
+
+This sealed class hierarchy provides several key benefits. The use of sealed classes ensures type safety through exhaustive pattern matching, which guarantees that all possible cases are handled at compile time. This design pattern also promotes a clear separation of concerns between different flashcard types, making the code more maintainable and easier to understand. Furthermore, the architecture is designed with extensibility in mind, allowing for straightforward addition of new flashcard types in the future while maintaining the existing type safety guarantees.
+
+The type-safe design significantly simplifies flashcard queue creation and management. Since each flashcard type is explicitly defined in the sealed class hierarchy, the system can easily generate and manage queues containing any combination of flashcard types. The compiler ensures proper handling of all flashcard types, preventing accidental omissions during queue creation and processing. This design also enables efficient queue operations like filtering, shuffling, and type-specific transformations while maintaining type safety.
+
+The UI implementation leverages this type-safe design through Dart's pattern matching capabilities. The \texttt{StudyScreen} widget demonstrates how this architecture enables clean, maintainable UI code:
+
+\begin{lstlisting}[language=Dart, caption={StudyScreen widget with pattern matching}, label=lst:study-screen]
+@RoutePage()
+class StudyScreen extends HookWidget {
+  @override
+  Widget build(BuildContext context) {
+    // ... state management code ...
+
+    return Scaffold(
+      body: switch (flashcardData) {
+        final SpellingFlashcardData data =>
+          SpellingFlashcard(entry: data.entry),
+        final MatchDefinitionsFlashcardData data =>
+          MatchDefinitionsFlashcard(entries: data.entries),
+        final MatchTranslationsFlashcardData data =>
+          MatchTranslationsFlashcard(entries: data.entries),
+        final PronunciationFlashcardData data =>
+          PronunciationFlashcard(vocabularyEntry: data.entry),
+        final RecallFlashcardData data => RecallFlashcard(
+            vocabularyEntry: data.entry,
+            flashcardSrsMetadata: data.metadata,
+          ),
+      },
+    );
+  }
+}
+\end{lstlisting}
+
+This implementation demonstrates several key architectural principles. Pattern matching ensures comprehensive handling of all flashcard types, while dedicated widgets for each type promote the single responsibility principle. The sealed class hierarchy enforces a strict contract where new flashcard types require corresponding UI updates, preventing inconsistencies. The architecture also maintains flexibility for future expansion, allowing straightforward addition of new flashcard types.
+
+\subsection{Streak System}
+
+The streak system implementation focused on creating a reliable and engaging mechanism for tracking daily practice. The system was designed with scalability in mind, allowing for future enhancements while maintaining a solid foundation.
+
+Key implementation aspects included:
+\begin{itemize}
+    \item Robust streak tracking logic that handles timezone changes and edge cases
+    \item Efficient data storage and retrieval for streak status
+    \item Smooth animations and visual feedback for streak milestones
+    \item Integration with the existing user progress tracking system
+\end{itemize}

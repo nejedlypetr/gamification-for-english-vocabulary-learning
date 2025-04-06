@@ -1,4 +1,3 @@
-
 %!TEX ROOT = ctutest.tex
 
 \ProvidesExplFile{ctuth-pkg.tex}%
@@ -553,8 +552,10 @@ BoldFont={Technika-Bold}%
 % Figures and tables in LoF and LoT exactly as sections, just the level is set to -2 so that they're always shown
 \def\l@figure{\ctu@dottedtoclinebold{-2}{2em}{0em}}
 \let\l@table\l@figure
+\let\l@lstlisting\l@figure
 
-
+% Add List of Listings command
+\DeclareDocumentCommand \listoflistings {  }{ \ctuthesis_maketoc_twocol:nn { lol } { \lstlistlistingname } }
 
 
 
@@ -836,6 +837,47 @@ BoldFont={Technika-Bold}%
 \usepackage{unicode-math}
 \usepackage{pifont}
 \usepackage{array}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinelanguage{Dart}{
+    keywords={abstract, as, assert, async, await, break, case, catch, class, const, continue, covariant, default, deferred, do, dynamic, else, enum, export, extends, extension, external, factory, false, final, finally, for, Function, get, hide, if, implements, import, in, interface, is, library, mixin, new, null, on, operator, part, required, rethrow, return, set, show, static, super, switch, sync, this, throw, true, try, typedef, var, void, while, with, yield},
+    keywordstyle=\color{magenta},
+    sensitive=true,
+    comment=[l]{//},
+    morecomment=[s]{/*}{*/},
+    commentstyle=\color{codegreen},
+    stringstyle=\color{codepurple},
+    morestring=[b]',
+    morestring=[b]"
+}
+
+\lstdefinestyle{dart}{
+    language=Dart,
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=dart}
 
 % Optional loading of amsthm
 \ctuthesis_if_switch:nT { pkg-amsthm } {
@@ -1004,11 +1046,7 @@ BoldFont={Technika-Bold}%
 % Provide \microtypesetup to make it available in case microtype wasn't loaded
 \providecommand\microtypesetup[1]{}
 
-
-
-
-
-
-
+\renewcommand{\lstlistingname}{Code}
+\renewcommand{\lstlistlistingname}{List of Code Listings}
 
 \endinput
