@@ -17,37 +17,57 @@ The data management strategy combines cloud-based and local storage solutions to
 
 The application leverages several key Flutter/Dart packages to enhance functionality and maintainability:
 \begin{itemize}
+    \item \textbf{get\_it} - Dependency injection framework for managing object creation and lifetime.
     \item \textbf{flutter\_hooks} - State management solution chosen for its simplicity and performance benefits over traditional state management approaches.
     \item \textbf{auto\_route} - Navigation and routing system that provides type-safe routing and reduces boilerplate code.
-    \item \textbf{flutter\_localizations} - Localization framework enabling internationalization support.
-    \item \textbf{apple\_sign\_in} - Apple sign-in provider for iOS platform authentication.
-    \item \textbf{google\_sign\_in} - Google sign-in provider for cross-platform authentication.
+    \item \textbf{objectbox} - Local storage solution for efficient data management.
+    \item \textbf{sign\_in\_with\_apple} and \textbf{google\_sign\_in} - Third-party authentication providers.
     \item \textbf{firebase\_auth} - User authentication service providing secure user management.
     \item \textbf{firebase\_functions} - Cloud functions for serverless computing, enabling scalable backend operations.
     \item \textbf{firebase\_firestore} - Cloud storage for real-time data synchronization and offline persistence.
+    \item \textbf{flutter\_localizations} - Localization framework enabling internationalization support.
 \end{itemize}
 
 \subsection{Architectural Overview}
 
-The application's architecture is organized into distinct layers following Clean Architecture principles:
+The application follows Clean Architecture principles with a clear separation of concerns across distinct layers, while incorporating custom architectural decisions to better suit the application's specific needs. The architecture is designed to maintain high maintainability and scalability while ensuring a unidirectional data flow. The codebase is organized into the following directory structure, each serving a specific purpose in the application's architecture:
 
 \begin{itemize}
-    \item \textbf{Domain Layer}: Contains business logic, entities, and use cases. This layer is independent of external frameworks and libraries.
+    \item \texttt{core/} – Provides shared utilities and common functionality.
+    \begin{itemize}
+        \item \texttt{constants/} – Application-wide constants and shared values.
+        \item \texttt{extensions/} – Dart language extensions providing additional functionality.
+        \item \texttt{injector/} – Dependency injection configuration and service registration.
+        \item \texttt{l10n/} – Internationalization and localization support.
+        \item \texttt{logger/} – Application logging functionality and utilities.
+        \item \texttt{routes/} – Application navigation and routing configuration.
+        \item \texttt{utils/} – Utility functions and helpers.
+    \end{itemize}
+
+    \item \texttt{domain/} – Contains the core business logic and is implementation independent.
+    \begin{itemize}
+        \item \texttt{entities/} – Core business objects representing the domain model.
+        \item \texttt{managers/} – Business logic orchestrators and state managers.
+        \item \texttt{repositories/} – Abstract interfaces defining data operations.
+        \item \texttt{usecases/} – Core business operations and rules between entities and repositories.
+    \end{itemize}
     
-    \item \textbf{Data Layer}: Implements repositories and data sources, handling data operations and transformations.
+    \item \texttt{data/} – Handles data operations and implementations of repository interfaces.
+    \begin{itemize}
+        \item \texttt{models/} – Data models and transformations.
+        \item \texttt{repositories/} – Concrete implementations of repository interfaces.
+        \item \texttt{mappers/} – Transformation logic between domain entities and data models.
+    \end{itemize}
     
-    \item \textbf{Presentation Layer}: Manages UI components, state management, and user interactions.
-    
-    \item \textbf{Core Layer}: Provides shared utilities, constants, and common functionality across the application.
+    \item \texttt{ui/} – Presentation layer managing user interface components and interactions.
+    \begin{itemize}
+        \item \texttt{theme/} – UI theme configuration and styling.
+        \item \texttt{screens/} – Screen-specific UI components and layouts.
+        \item \texttt{widgets/} – Reusable UI components.
+        \item \texttt{hooks/} – UI-specific hooks for state management and resource handling within widgets.
+    \end{itemize}
 \end{itemize}
 
-This layered architecture ensures:
-\begin{itemize}
-    \item Clear separation of concerns
-    \item Improved testability
-    \item Enhanced maintainability
-    \item Better scalability
-\end{itemize}
 
 \section{New Monorepo Architecture}
 \label{sec:new-monorepo-architecture}
