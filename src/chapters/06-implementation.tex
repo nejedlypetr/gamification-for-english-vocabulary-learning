@@ -33,44 +33,100 @@ The application leverages several key Flutter/Dart packages to enhance functiona
 The application follows Clean Architecture principles with a clear separation of concerns across distinct layers, while incorporating custom architectural decisions to better suit the application's specific needs. The architecture is designed to maintain high maintainability and scalability while ensuring a unidirectional data flow. The codebase is organized into the following directory structure, each serving a specific purpose in the application's architecture:
 
 \begin{itemize}
-    \item \texttt{core/} – Provides shared utilities and common functionality.
+    \item \textbf{\texttt{core/}} – Provides shared utilities and common functionality.
     \begin{itemize}
-        \item \texttt{constants/} – Application-wide constants and shared values.
-        \item \texttt{extensions/} – Dart language extensions providing additional functionality.
-        \item \texttt{injector/} – Dependency injection configuration and service registration.
-        \item \texttt{l10n/} – Internationalization and localization support.
-        \item \texttt{logger/} – Application logging functionality and utilities.
-        \item \texttt{routes/} – Application navigation and routing configuration.
-        \item \texttt{utils/} – Utility functions and helpers.
+        \item \textbf{\texttt{constants/}} – Application-wide constants and shared values.
+        \item \textbf{\texttt{extensions/}} – Dart language extensions providing additional functionality.
+        \item \textbf{\texttt{injector/}} – Dependency injection configuration and service registration.
+        \item \textbf{\texttt{l10n/}} – Internationalization and localization support.
+        \item \textbf{\texttt{logger/}} – Application logging functionality and utilities.
+        \item \textbf{\texttt{routes/}} – Application navigation and routing configuration.
+        \item \textbf{\texttt{utils/}} – Utility functions and helpers.
     \end{itemize}
 
-    \item \texttt{domain/} – Contains the core business logic and is implementation independent.
+    \item \textbf{\texttt{domain/}} – Contains the core business logic and is implementation independent.
     \begin{itemize}
-        \item \texttt{entities/} – Core business objects representing the domain model.
-        \item \texttt{managers/} – Business logic orchestrators and state managers.
-        \item \texttt{repositories/} – Abstract interfaces defining data operations.
-        \item \texttt{usecases/} – Core business operations and rules between entities and repositories.
+        \item \textbf{\texttt{entities/}} – Core business objects representing the domain model.
+        \item \textbf{\texttt{managers/}} – Business logic orchestrators and state managers.
+        \item \textbf{\texttt{repositories/}} – Abstract interfaces defining data operations.
+        \item \textbf{\texttt{usecases/}} – Core business operations and rules between entities and repositories.
     \end{itemize}
     
-    \item \texttt{data/} – Handles data operations and implementations of repository interfaces.
+    \item \textbf{\texttt{data/}} – Handles data operations and implementations of repository interfaces.
     \begin{itemize}
-        \item \texttt{models/} – Data models and transformations.
-        \item \texttt{repositories/} – Concrete implementations of repository interfaces.
-        \item \texttt{mappers/} – Transformation logic between domain entities and data models.
+        \item \textbf{\texttt{models/}} – Data models and transformations.
+        \item \textbf{\texttt{repositories/}} – Concrete implementations of repository interfaces.
+        \item \textbf{\texttt{mappers/}} – Transformation logic between domain entities and data models.
     \end{itemize}
     
-    \item \texttt{ui/} – Presentation layer managing user interface components and interactions.
+    \item \textbf{\texttt{ui/}} – Presentation layer managing user interface components and interactions.
     \begin{itemize}
-        \item \texttt{theme/} – UI theme configuration and styling.
-        \item \texttt{screens/} – Screen-specific UI components and layouts.
-        \item \texttt{widgets/} – Reusable UI components.
-        \item \texttt{hooks/} – UI-specific hooks for state management and resource handling within widgets.
+        \item \textbf{\texttt{theme/}} – UI theme configuration and styling.
+        \item \textbf{\texttt{screens/}} – Screen-specific UI components and layouts.
+        \item \textbf{\texttt{widgets/}} – Reusable UI components.
+        \item \textbf{\texttt{hooks/}} – Hooks for state management and resource handling within Flutter widgets.
     \end{itemize}
 \end{itemize}
 
+\subsection{Architecture Limitations}
+\label{sec:architecture-limitations}
 
-\section{New Monorepo Architecture}
-\label{sec:new-monorepo-architecture}
+While the current architecture provides a solid foundation for the core English Mind application, it presents several challenges when implementing new gamification features. A critical consideration is the proprietary nature of the English Mind application, which necessitates a separate demonstration application (\texttt{em\_demo}) for implementing gamification features. This approach preserves intellectual property rights while providing a controlled environment for feature validation. The demonstration application serves as a proof of concept, enabling the implementation and testing of gamification elements without exposing the original application's proprietary codebase. This separation allows for independent development and validation of new features while maintaining the integrity of the production application.
+
+The architectural challenges manifest in several key areas that impact the development of the demonstration application. First, while the current architecture follows clean architecture principles, the UI components exhibit tight coupling with application-specific concerns. This coupling creates significant challenges when attempting to reuse components in the new application.
+
+A primary example of this coupling is the integration of multiple concerns within individual components. Specifically, UI components combine both localization logic through \texttt{flutter\_localizations} and state management through \texttt{flutter\_hooks}. This integration violates the single responsibility principle \cite{cite:solid_principles}, as each component handles multiple distinct responsibilities. The resulting tight coupling makes it challenging to extract and reuse components in the new application without also migrating their dependencies, leading to potential code duplication and increased maintenance overhead.
+
+Additionally, the lack of systematic component documentation presents a significant barrier to component reuse. Without clear documentation of component interfaces, dependencies, and usage patterns, developers face difficulties in understanding and adapting existing UI elements for the demonstration application. This issue is particularly problematic when attempting to maintain consistency between the original and demonstration applications.
+
+These limitations collectively highlight the need for a more modular architecture that supports component isolation and documentation. Such an architecture would enable better component reuse while maintaining consistency between the original and demonstration applications.
+\newpage
+\section{New System Architecture}
+\label{sec:new-system-architecture}
+
+The architectural limitations identified in the previous section \ref{sec:architecture-limitations} necessitated a fundamental restructuring of the development approach. The primary challenge was the need to maintain a separate demonstration application (\texttt{em\_demo}) for implementing and testing gamification features while preserving the proprietary nature of the main English Mind application. This requirement, combined with the existing architectural constraints of component coupling and documentation gaps, led to the adoption of a monorepo architecture. This new architecture provides a structured environment that enables parallel development of both applications while maintaining clear separation of concerns. The following sections detail how this architectural shift not only addresses the immediate need for separate applications but also improves overall maintainability and scalability of the development process.
+
+\subsection{Monorepo Solution}
+
+To address the architectural limitations identified in Section \ref{sec:architecture-limitations}, we implemented a monorepo architecture that enables parallel development of both the main English Mind application and the demonstration application. This approach provides several key benefits:
+
+\begin{itemize}
+    \item \textbf{Code Reusability} - Shared components and utilities can be extracted into separate packages, reducing code duplication and ensuring consistency across applications.
+    \item \textbf{Unified Version Control} - All code resides in a single repository, providing a complete history of changes across all applications and packages, while maintaining clear separation between the main and demonstration applications.
+    \item \textbf{Streamlined Development Workflow} - Developers can work on multiple applications simultaneously while maintaining a single source of truth for shared code.
+    \item \textbf{Improved Testing and Validation} - New features can be developed and tested in the demonstration application before being integrated into the main application.
+\end{itemize}
+
+The monorepo solution was implemented using Melos \cite{cite:melos}, a tool specifically designed for managing Dart and Flutter monorepos. Melos provides essential features such as workspace management, package linking, and script execution across multiple packages. This choice was made to leverage Melos's robust support for Flutter development and its ability to handle complex dependency graphs while maintaining optimal build performance.
+
+\subsection{Monorepo Architecture}
+
+The monorepo architecture is organized into a clear directory structure that promotes code organization, reusability, and maintainability. The root directory contains the following key components:
+
+\begin{itemize}
+    \item \textbf{\texttt{apps/}} – Contains all Flutter applications in the workspace.
+    \begin{itemize}
+        \item \textbf{\texttt{english\_mind/}} – The production version of English Mind.
+        \item \textbf{\texttt{em\_demo/}} – The demonstration version of English Mind.
+        \item \textbf{\texttt{widgetbook/}} – UI components documentation.
+    \end{itemize}
+
+    \item \textbf{\texttt{packages/}} – Houses all shared packages used across applications.
+    \begin{itemize}
+        \item \textbf{\texttt{em\_theme/}} – Shared UI theming and styling components.
+        \item \textbf{\texttt{em\_lints/}} – Custom linting rules and analysis options.
+        \item \textbf{\texttt{em\_widgets/}} – Reusable UI components.
+        \item \textbf{\texttt{em\_vocabulary/}} – Core vocabulary data, models and management.
+    \end{itemize}
+\end{itemize}
+
+The \texttt{em\_demo} application follows the same architectural structure as the main English Mind application, maintaining consistency in code organization and development patterns. This approach ensures that features developed in the demonstration application can be seamlessly integrated into the main application when ready for production deployment.
+
+\subsection{Widgetbook Documentation}
+
+Widgetbook serves as a dedicated documentation environment for UI components, providing an interactive catalog of all shared widgets and their variations. This tool enables developers to visualize and test components in isolation, ensuring consistent implementation across both applications. 
+
+The adoption of Widgetbook was driven by its ability to provide centralized, interactive documentation of UI components, making it easier for developers to understand and use shared components correctly. The tool significantly improves development efficiency by allowing developers to work on components in isolation without needing to navigate through the full application, reducing context switching and development time \cite{cite:widgetbook_efficiency}. Furthermore, it serves as a living style guide that validates the implementation of the design system and ensures adherence to design specifications, while also facilitating better communication between designers and developers through a shared reference point for UI components \cite{cite:design_system_validation}.
 
 \section{Features Implementation}
 \label{sec:features-implementation}
