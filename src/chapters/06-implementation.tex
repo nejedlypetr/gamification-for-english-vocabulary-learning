@@ -211,12 +211,32 @@ This implementation demonstrates several key architectural principles. Pattern m
 
 \subsection{Streak System}
 
-The streak system implementation focused on creating a reliable and engaging mechanism for tracking daily practice. The system was designed with scalability in mind, allowing for future enhancements while maintaining a solid foundation.
+The streak system implementation focused on creating a reliable and engaging mechanism for tracking daily practice, with a design that prioritizes scalability and future extensibility. The core of the streak system is implemented in the \texttt{Streak} class:
 
-Key implementation aspects included:
+\begin{lstlisting}[language=Dart, caption={Streak class implementation}, label=lst:streak-class]
+class Streak {
+  final String _uid;
+  final Set<int> _activeDays; // Unix timestamps
+  // final Set<int> freezeDays; // Unix timestamps
+
+  bool get isActive;
+  int get currentStreak;
+  int get longestStreak;
+
+  Streak({required String uid, Set<int>? activeDays})
+      : _uid = uid,
+        _activeDays = activeDays ?? <int>{};
+}
+\end{lstlisting}
+
+The streak system's implementation provides a solid foundation for tracking user engagement while maintaining flexibility for future enhancements. The design decisions ensure that the system remains reliable, accurate, and scalable as the application evolves. The implementation demonstrates several key design decisions:
+
 \begin{itemize}
-    \item Robust streak tracking logic that handles timezone changes and edge cases
-    \item Efficient data storage and retrieval for streak status
-    \item Smooth animations and visual feedback for streak milestones
-    \item Integration with the existing user progress tracking system
+    \item \textbf{Timezone Independence} - By using Unix timestamps (milliseconds since epoch) and converting to local dates only when necessary, the system maintains consistency across different timezones. This approach ensures that streak calculations remain accurate regardless of the user's location or timezone changes.
+    
+    \item \textbf{Historical Data Preservation} - The system maintains a complete history of active days, enabling not only current streak tracking but also historical analysis. This data structure allows for easy calculation of both current and longest streaks, providing valuable insights into user engagement patterns its analysis.
+    
+    \item \textbf{Future Extensibility} - The commented \texttt{freezeDays} field (line 4 in Code \ref{lst:streak-class}) demonstrates how the system can be extended to support additional features like streak freezes. This design pattern allows for straightforward addition of new functionality without disrupting existing streak calculations.
+    
+    \item \textbf{Data Integrity} - Streak values are calculated on-demand rather than stored, ensuring that the data remains consistent even if the system rules change. This approach prevents data corruption and allows for flexible updates to streak calculation logic without requiring data migration.
 \end{itemize}
