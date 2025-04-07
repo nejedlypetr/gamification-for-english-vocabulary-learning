@@ -236,7 +236,7 @@ The streak system's implementation provides a solid foundation for tracking user
     
     \item \textbf{Historical Data Preservation} - The system maintains a complete history of active days, enabling not only current streak tracking but also historical analysis. This data structure allows for easy calculation of both current and longest streaks, providing valuable insights into user engagement patterns its analysis.
     
-    \item \textbf{Future Extensibility} - The commented \texttt{freezeDays} field (line 4 in Code \ref{lst:streak-class}) demonstrates how the system can be extended to support additional features like streak freezes. This design pattern allows for straightforward addition of new functionality without disrupting existing streak calculations.
-    
     \item \textbf{Data Integrity} - Streak values are calculated on-demand rather than stored, ensuring that the data remains consistent even if the system rules change. This approach prevents data corruption and allows for flexible updates to streak calculation logic without requiring data migration.
+    
+    \item \textbf{Future Extensibility} - The commented \texttt{freezeDays} field (line 4 in Code \ref{lst:streak-class}) demonstrates how the system can be extended to support additional features like streak freezes. This design pattern allows for straightforward addition of new functionality without disrupting existing streak calculations.
 \end{itemize}
