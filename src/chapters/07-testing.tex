@@ -1,0 +1,42 @@
+\chapter{Testing}
+
+This chapter presents the testing approach and results for the implemented gamification features. The testing strategy combined both automated unit testing and user testing to ensure the reliability and usability of the new features.
+
+\section{Unit Testing}
+
+Given that most of the implementation features are UI components, which are not suitable for unit testing due to their interactive and visual nature, the testing efforts were primarily focused on the streak system's logic. The streak unit tests were implemented using the Flutter testing framework and covered the core functionality of streak tracking, including:
+
+\begin{itemize}
+    \item Streak activation and maintenance
+    \item Streak calculation across different time zones
+    \item Streak break conditions
+    \item Historical streak tracking
+\end{itemize}
+
+These tests ensure the reliability of the streak tracking mechanism, which is crucial for maintaining user engagement and motivation.
+
+\newpage
+\section{User Testing}
+The user testing was conducted over a 14-day period with six participants, evenly distributed across Android and iOS platforms (three participants each). This extended testing period allowed for thorough evaluation of the streak system's reliability and user engagement patterns. The testing focused on evaluating the usability and effectiveness of the gamification features, particularly:
+\begin{itemize}
+    \item Flashcard type interactions and usability
+    \item Streak system comprehension and engagement
+    \item Progress tracking clarity
+\end{itemize}
+The testing revealed only one minor issue: the pronunciation recognition system occasionally failed to recognize isolated words. However, when users pronounced the words within a sentence context, the recognition worked correctly. This finding suggests that the speech recognition system performs better with contextual pronunciation, which aligns with natural language patterns.
+
+All other features functioned as intended, with no additional bugs or issues reported. The positive testing outcomes validate the technical implementation and suggest that the features are ready for production deployment.
+
+\subsection{Limitations and Future Work}
+While the 14-day testing period provided valuable insights into the immediate usability and technical functionality of the gamification features, it was not sufficient to fully evaluate long-term engagement patterns and learning outcomes. Future work could include:
+\begin{itemize}
+    \item Extended long-term study (3-6 months) to analyze:
+    \begin{itemize}
+        \item Long-term engagement patterns and retention rates
+        \item Correlation between streak maintenance and vocabulary acquisition
+    \end{itemize}
+    \item A/B testing of different gamification mechanics to optimize engagement
+    \item Integration of learning analytics to measure the effectiveness of gamification on vocabulary retention
+    \item Comparative study with a control group using a non-gamified version
+\end{itemize}
+These extended studies would provide more robust data on the long-term effectiveness of the implemented gamification features and their impact on language learning outcomes.
