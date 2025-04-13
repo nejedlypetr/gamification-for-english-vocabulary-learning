@@ -3,18 +3,18 @@
 
 This chapter presents the technical implementation of the gamification features proposed in Chapter \ref{chap:proposed-solution-design} and validated through user testing in Chapter \ref{chap:prototype-user-testing}. The implementation process was structured to ensure both technical feasibility and alignment with the application's existing architecture while maintaining the core pedagogical principles of English Mind.
 
-The chapter begins with an analysis of the current system architecture, providing context for the technical decisions made during implementation. Following this, we introduce a monorepo architecture solution that enables parallel development of the prototype and main application. This approach allows for rapid iteration and testing of new features without disrupting the production environment. Finally, we detail the implementation of selected gamification features, focusing on technical considerations, integration challenges, and solutions adopted.
+This chapter begins with an analysis of the current system architecture, providing context for the technical decisions made during implementation. Following this, a monorepo architecture is introduced that enables parallel development of both the main application and a demonstration application, allowing for the protection of the main application's intellectual property while still enabling development and testing of new features. This approach allows for rapid iteration and testing of new features without disrupting the production environment. Finally, the implementation of selected gamification features is detailed, focusing on technical considerations, integration challenges, and solutions adopted.
 
 \section{Existing System Architecture}
 \label{sec:existing-system-architecture}
 
-English Mind is built using the Flutter framework, chosen for its cross-platform capabilities and robust widget system. The application follows a modular architecture inspired by Clean Architecture principles, ensuring separation of concerns and maintainability. This section provides a comprehensive overview of the current system architecture, detailing the technology stack, architectural patterns, and key system components.
+English Mind is built using the Flutter framework \cite{cite:flutter_framework}, chosen for its cross-platform capabilities and robust widget system. The application follows a modular architecture inspired by Clean Architecture principles \cite{cite:clean_architecture}, ensuring separation of concerns and maintainability. This section provides a comprehensive overview of the current system architecture, detailing the technology stack, architectural patterns, and key system components.
 \newpage
 \subsection{Technology Stack}
 
-The application is built using the Flutter framework, chosen for its cross-platform capabilities and robust widget system. This choice enables the development of a single codebase that runs seamlessly on both iOS and Android platforms while maintaining native-like performance and user experience. The decision to use Flutter was driven by its ability to deliver consistent user interfaces across platforms while maintaining high performance, as demonstrated by its successful implementation in numerous production applications \cite{cite:google_flutter_case_studies}.
+The application is built using the Flutter framework \cite{cite:flutter_framework}, chosen for its cross-platform capabilities and robust widget system. This choice enables the development of a single codebase that runs seamlessly on both iOS and Android platforms while maintaining native-like performance and user experience. The decision to use Flutter was driven by its ability to deliver consistent user interfaces across platforms while maintaining high performance, as demonstrated by its successful implementation in numerous production applications \cite{cite:google_flutter_case_studies}.
 
-The data management strategy combines cloud-based and local storage solutions to balance performance, offline capability, and real-time synchronization requirements. Firebase Firestore serves as the primary cloud storage solution, providing real-time data synchronization and a NoSQL document database. This choice was made to leverage Firestore's built-in offline persistence and real-time updates, which are crucial for maintaining user progress across devices. For translation services, the application integrates with the Microsoft Translator API, selected for its high accuracy and extensive language support. The vocabulary data is stored locally in a JSON file containing word definitions and sentence examples, a design decision that ensures immediate access to core content without network dependency and reduces server load.
+The data management strategy combines cloud-based and local storage solutions to balance performance, offline capability, and real-time synchronization requirements. Firebase Firestore \cite{cite:firebase_firestore} serves as the primary cloud storage solution, providing real-time data synchronization and a NoSQL document database. This choice was made to leverage Firestore's built-in offline persistence and real-time updates, which are crucial for maintaining user progress across devices. For translation services, the application integrates with the Microsoft Translator API \cite{cite:microsoft_translator}, selected for its high accuracy and extensive language support. The vocabulary data is stored locally in a JSON file containing word definitions and sentence examples, a design decision that ensures immediate access to core content without network dependency and reduces server load.
 
 The application leverages several key Flutter/Dart packages to enhance functionality and maintainability:
 \begin{itemize}
@@ -30,8 +30,9 @@ The application leverages several key Flutter/Dart packages to enhance functiona
 \end{itemize}
 
 \subsection{Architectural Overview}
+\label{sec:architectural-overview}
 
-The application follows Clean Architecture principles with a clear separation of concerns across distinct layers, while incorporating custom architectural decisions to better suit the application's specific needs. The architecture is designed to maintain high maintainability and scalability while ensuring a unidirectional data flow. The codebase is organized into the following directory structure, each serving a specific purpose in the application's architecture:
+The application follows Clean Architecture \cite{cite:clean_architecture} principles with a clear separation of concerns across distinct layers, while incorporating custom architectural decisions to better suit the application's specific needs. The architecture is designed to maintain high maintainability and scalability while ensuring a unidirectional data flow. The codebase is organized into the following directory structure, each serving a specific purpose in the application's architecture:
 
 \begin{itemize}
     \item \textbf{\texttt{core/}} – Provides shared utilities and common functionality.
@@ -123,11 +124,11 @@ The monorepo architecture is organized into a clear directory structure that pro
     \item \textbf{\texttt{melos.yaml}} – Melos configuration scripts.
 \end{itemize}
 
-The \texttt{em\_demo} application follows the same architectural structure as the main English Mind application, maintaining consistency in code organization and development patterns. This approach ensures that features developed in the demonstration application can be seamlessly integrated into the main application when ready for production deployment.
+The \texttt{em\_demo} application follows the same architectural structure as the main English Mind application as described in Section \ref{sec:architectural-overview}, maintaining consistency in code organization and development patterns. This approach ensures that features developed in the demonstration application can be seamlessly integrated into the main application when ready for production deployment.
 
 \subsection{Widgetbook Documentation}
 
-Widgetbook serves as a dedicated documentation environment for UI components, providing an interactive catalog of all shared widgets and their variations, as shown in Figure \ref{fig:widgetbook}. This tool enables developers to visualize and test components in isolation, ensuring consistent implementation across both applications. 
+Widgetbook \cite{cite:widgetbook} serves as a dedicated documentation environment for UI components, providing an interactive catalog of all shared widgets and their variations, as shown in Figure \ref{fig:widgetbook}. This tool enables developers to visualize and test components in isolation, ensuring consistent implementation across both applications. 
 
 The adoption of Widgetbook was driven by its ability to provide centralized, interactive documentation of UI components, making it easier for developers to understand and use shared components correctly. The tool significantly improves development efficiency by allowing developers to work on components in isolation without needing to navigate through the full application, reducing context switching and development time \cite{cite:widgetbook_efficiency}. Furthermore, it serves as a living style guide that validates the implementation of the design system and ensures adherence to design specifications, while also facilitating better communication between designers and developers through a shared reference point for UI components \cite{cite:design_system_validation}.
 
