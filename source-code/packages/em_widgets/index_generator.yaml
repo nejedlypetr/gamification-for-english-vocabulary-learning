@@ -1,0 +1,9 @@
+index_generator:
+  default_file_name: em_widgets
+  exclude:
+    - "**.g.dart"
+    - "**.freezed.dart"
+  libraries:
+    - directory_path: lib
+      include:
+        - "src/**"

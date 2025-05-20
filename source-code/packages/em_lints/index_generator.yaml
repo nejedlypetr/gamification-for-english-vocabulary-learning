@@ -1,0 +1,4 @@
+index_generator:
+  default_file_name: em_lints
+  libraries:
+    - directory_path: lib

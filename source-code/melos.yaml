@@ -1,0 +1,54 @@
+name: english_mind_project
+
+packages:
+  - apps/**
+  - packages/**
+
+scripts:
+  bootstrap:
+    description: Bootstrap the project dependencies
+    exec: melos bootstrap
+
+  clean:
+    description: Clean all build directories
+    exec: melos clean
+
+  build:clear:
+    description: Clear all build folders
+    run: melos exec -- "rm -rf ./build"
+    packageFilters:
+      scope: "english_mind*"
+
+  generate:build_runner:
+    description: Run build_runner for all packages
+    run: melos exec -- "dart run build_runner build --delete-conflicting-outputs"
+    packageFilters:
+      dependsOn: build_runner
+
+  generate:index:
+    description: Generate index files for all packages
+    run: melos exec -- "dart pub global run index_generator"
+    packageFilters:
+      scope: "*em*"
+      dependsOn: index_generator
+
+  generate:app:widgetbook:
+    description: Generate widgetbook
+    run: melos exec -- "dart run build_runner build -d"
+    packageFilters:
+      scope: "*widgetbook*"
+
+  generate:all:
+    description: Run all code generation tasks
+    run: |
+      melos run generate:build_runner
+      melos run generate:index
+      melos run generate:app:widgetbook
+
+  prepare:
+    description: Clean everything and prepare the repository
+    run: |
+      melos run build:clear
+      melos clean
+      melos bootstrap
+      melos run generate:all

@@ -1,0 +1,63 @@
+class TranslationEntry {
+  final String original;
+  final List<String> translations;
+  final TranslationLanguage language;
+
+  TranslationEntry({
+    required this.original,
+    required this.language,
+    required this.translations,
+  });
+}
+
+enum TranslationLanguage {
+  afrikaans,
+  arabic,
+  bangla,
+  bosnianLatin,
+  bulgarian,
+  catalan,
+  chineseSimplified,
+  croatian,
+  czech,
+  danish,
+  dutch,
+  finnish,
+  french,
+  german,
+  greek,
+  haitianCreole,
+  hebrew,
+  hindi,
+  hmongDaw,
+  hungarian,
+  icelandic,
+  indonesian,
+  italian,
+  japanese,
+  korean,
+  latvian,
+  lithuanian,
+  malayLatin,
+  maltese,
+  norwegian,
+  persian,
+  polish,
+  portugueseBrazil,
+  romanian,
+  russian,
+  serbianLatin,
+  slovak,
+  slovenian,
+  spanish,
+  swahiliLatin,
+  swedish,
+  tamil,
+  thai,
+  turkish,
+  ukrainian,
+  urdu,
+  vietnamese,
+  welsh,
+  other,
+}

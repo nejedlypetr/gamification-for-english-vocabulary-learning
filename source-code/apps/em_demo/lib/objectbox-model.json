@@ -1,0 +1,64 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:3451245532775799499",
+      "lastPropertyId": "3:1120849936479319792",
+      "name": "StreakDayObjectBox",
+      "properties": [
+        {
+          "id": "1:4064074720774332973",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:50944884307040855",
+          "name": "timestamp",
+          "type": 6
+        },
+        {
+          "id": "3:1120849936479319792",
+          "name": "streakId",
+          "type": 11,
+          "flags": 520,
+          "indexId": "1:4189398045021926941",
+          "relationTarget": "StreakObjectBox"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "2:3003033042584050111",
+      "lastPropertyId": "2:3943157560222626976",
+      "name": "StreakObjectBox",
+      "properties": [
+        {
+          "id": "1:592526533505998831",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:3943157560222626976",
+          "name": "userId",
+          "type": 9
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "2:3003033042584050111",
+  "lastIndexId": "1:4189398045021926941",
+  "lastRelationId": "0:0",
+  "lastSequenceId": "0:0",
+  "modelVersion": 5,
+  "modelVersionParserMinimum": 5,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [],
+  "retiredRelationUids": [],
+  "version": 1
+}

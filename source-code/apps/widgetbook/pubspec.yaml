@@ -1,0 +1,46 @@
+name: english_mind_widgetbook
+description: "English Mind widgetbook."
+
+publish_to: "none"
+version: 0.0.1
+
+environment:
+  sdk: ^3.6.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  widgetbook: 3.10.2
+  widgetbook_annotation: 3.2.0
+  em_widgets: 0.0.1
+  em_theme: 0.0.1
+  em_vocabulary: 0.0.1
+  flutter_hooks: 0.21.2
+  heroicons_flutter: 0.4.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  em_lints: 0.0.1
+  build_runner: 2.4.14
+  widgetbook_generator: 3.9.1
+
+flutter:
+  uses-material-design: true
+
+  fonts:
+    - family: ReadexPro
+      fonts:
+        - asset: assets/fonts/ReadexPro-ExtraLight.ttf
+        - asset: assets/fonts/ReadexPro-Light.ttf
+        - asset: assets/fonts/ReadexPro-Regular.ttf
+        - asset: assets/fonts/ReadexPro-Medium.ttf
+        - asset: assets/fonts/ReadexPro-SemiBold.ttf
+        - asset: assets/fonts/ReadexPro-Bold.ttf
+    - family: NotoSans
+      fonts:
+        - asset: assets/fonts/NotoSans-Regular.ttf
+    - family: Pacifico
+      fonts:
+        - asset: assets/fonts/Pacifico-Regular.ttf

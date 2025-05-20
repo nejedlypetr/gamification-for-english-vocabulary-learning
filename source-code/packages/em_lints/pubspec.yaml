@@ -1,0 +1,15 @@
+name: em_lints
+description: "English Mind lint rules"
+
+version: 0.0.1
+publish_to: "none"
+
+environment:
+  sdk: ^3.6.0
+
+dependencies:
+  lints: 5.0.0
+
+dev_dependencies:
+  build_runner: 2.4.14
+  index_generator: 4.0.1

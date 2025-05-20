@@ -1,0 +1,21 @@
+name: em_theme
+description: "English Mind theme"
+
+version: 0.0.1
+publish_to: "none"
+
+environment:
+  sdk: ^3.6.0
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  provider: 6.1.2
+  copy_with_extension: 6.0.1
+
+dev_dependencies:
+  em_lints: 0.0.1
+  build_runner: 2.4.14
+  index_generator: 4.0.1
+  copy_with_extension_gen: 6.0.1

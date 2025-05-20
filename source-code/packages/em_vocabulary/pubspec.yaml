@@ -1,0 +1,26 @@
+name: em_vocabulary
+description: "English Mind vocabulary"
+
+publish_to: none
+version: 0.0.1
+
+environment:
+  sdk: ^3.6.0
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  get_it: 8.0.3
+  collection: 1.19.1
+  flutter_svg: 2.0.17
+
+dev_dependencies:
+  em_lints: 0.0.1
+  build_runner: 2.4.14
+  index_generator: 4.0.1
+
+flutter:
+  assets:
+    - assets/svg/
+    - assets/json/
