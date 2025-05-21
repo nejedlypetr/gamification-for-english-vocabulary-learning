@@ -14,7 +14,7 @@ English Mind is built using the Flutter framework \cite{cite:flutter_framework},
 \newpage
 \subsection{Technology Stack}
 
-The application is built using the Flutter framework \cite{cite:flutter_framework}, chosen for its cross-platform capabilities and robust widget system. This choice enables the development of a single codebase that runs seamlessly on both iOS and Android platforms while maintaining native-like performance and user experience. The decision to use Flutter was driven by its ability to deliver consistent user interfaces across platforms while maintaining high performance, as demonstrated by its successful implementation in numerous production applications \cite{cite:google_flutter_case_studies}.
+The Flutter framework enables the development of a single codebase that runs seamlessly on both iOS and Android platforms while maintaining native-like performance and user experience \cite{cite:flutter_framework}. The decision to use Flutter was driven by its ability to deliver consistent user interfaces across platforms while maintaining high performance, as demonstrated by its successful implementation in numerous production applications \cite{cite:google_flutter_case_studies}.
 
 The data management strategy combines cloud-based and local storage solutions to balance performance, offline capability, and real-time synchronization requirements. Firebase Firestore \cite{cite:firebase_firestore} serves as the primary cloud storage solution, providing real-time data synchronization and a NoSQL document database. This choice was made to leverage Firestore's built-in offline persistence and real-time updates, which are crucial for maintaining user progress across devices. For translation services, the application integrates with the Microsoft Translator API \cite{cite:microsoft_translator}, selected for its high accuracy and extensive language support. The vocabulary data is stored locally in a JSON file containing word definitions and sentence examples, a design decision that ensures immediate access to core content without network dependency and reduces server load.
 
@@ -141,7 +141,7 @@ All gamification features proposed in Chapter \ref{chap:proposed-solution-design
 
 \subsection{Diversified Flashcard Types}
 
-The implementation of diversified flashcard types showcases a clean, type-safe approach using Dart's sealed classes. This design pattern ensures exhaustive handling of all flashcard types while maintaining a clear separation of concerns. The core of this implementation is the \texttt{FlashcardData} sealed class hierarchy:
+The implementation of diversified flashcard types showcases a clean, type-safe approach using Dart's sealed classes. This design pattern ensures exhaustive handling of all flashcard types while maintaining a clear separation of concerns. The core of this implementation is the \texttt{FlashcardData} sealed class hierarchy, see Code \ref{lst:flashcard-data}.
 
 \begin{lstlisting}[language=Dart, caption={FlashcardData sealed class hierarchy defining different flashcard types}, label=lst:flashcard-data]
 sealed class FlashcardData {}
@@ -182,7 +182,7 @@ This sealed class hierarchy provides several key benefits. The use of sealed cla
 
 The type-safe design significantly simplifies flashcard queue creation and management. Since each flashcard type is explicitly defined in the sealed class hierarchy, the system can easily generate and manage queues containing any combination of flashcard types. The compiler ensures proper handling of all flashcard types, preventing accidental omissions during queue creation and processing. This design also enables efficient queue operations like filtering, shuffling, and type-specific transformations while maintaining type safety.
 
-The UI implementation leverages this type-safe design through Dart's pattern matching capabilities. The \texttt{StudyScreen} widget demonstrates how this architecture enables clean, maintainable UI code:
+The UI implementation leverages this type-safe design through Dart's pattern matching capabilities. The \texttt{StudyScreen} widget demonstrates how this architecture enables clean, maintainable UI code, see Code \ref{lst:study-screen}.
 
 \begin{lstlisting}[language=Dart, caption={StudyScreen widget with pattern matching}, label=lst:study-screen]
 @RoutePage()
